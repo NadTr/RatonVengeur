@@ -51,5 +51,6 @@ MonoBehaviour:
   barrel: {fileID: 7713479189521252009, guid: 5df4925512347f643a05bb41f7a73dee, type: 3}
   tree: {fileID: 2067313742234780347, guid: 99502b7a2e04ee4478078c02478ec8a4, type: 3}
   possibleLocations: {fileID: 6619216007406577755, guid: ac6693dabc1bf254b860936d37b095fb, type: 3}
+  hidingPlaces: {fileID: 3152271291867041880, guid: e505cbb4cac4c214581ece829e0e156b, type: 3}
   gameManager: {fileID: 2122999923858279544, guid: ab160aa1111f93e428f733e940b9be66, type: 3}
   gameData: {fileID: 11400000, guid: 88a0c7e24fcfb114fac9db734b0cb151, type: 2}

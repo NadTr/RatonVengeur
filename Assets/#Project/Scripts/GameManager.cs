@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     {
         this.player = player;
         this.cam = cam;
-        Debug.Log(player.transform.position);
     }
     void Update()
     {

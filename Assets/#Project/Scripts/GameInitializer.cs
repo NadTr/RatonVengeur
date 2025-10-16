@@ -13,11 +13,10 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private InputActionAsset actions;
 
     [Space]
-    [Header("SearchableObjects")]
-    [SerializeField] GameObject rock;
-    [SerializeField] GameObject barrel;
-    [SerializeField] GameObject tree;
+    [Header("HidingPlaces")]
+    [SerializeField] GameObject[] prefabs;
     [SerializeField] GameObject possibleLocations;
+    [SerializeField] HidingPlacesManager hidingPlaces;
 
     [Space]
     [Header("Game Manager")]
@@ -40,6 +39,7 @@ public class GameInitializer : MonoBehaviour
         cameraManager = Instantiate(cameraManager);
         gameManager = Instantiate(gameManager);
         player = Instantiate(player);
+        hidingPlaces = Instantiate(hidingPlaces);
         // uIManager = Instantiate(uIManager);
     }
 
@@ -49,6 +49,7 @@ public class GameInitializer : MonoBehaviour
         player.Initialize(gameManager,player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
         cameraManager.Initialize(player.transform);
         gameManager.Initialize(player, cameraManager);
+        hidingPlaces.Initialize(possibleLocations, prefabs);
         // gameManager.Initialize(uIManager, player);
     }
 }

@@ -1,10 +1,6 @@
 using System;
-// using System.Numerics;
-using NUnit.Framework.Internal;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -66,15 +62,12 @@ public class RaccoonController : MonoBehaviour
     
     public void Process()
     {
-        Debug.Log("process");
         Move();
     }
 
     private void Move()
     {
         Vector2 movement = Time.deltaTime * speed * move.ReadValue<Vector2>();
-        Debug.Log("movement");
-        Debug.Log(movement);
          
         spriteRenderer.flipX = movement.x < 0;
 
@@ -89,7 +82,6 @@ public class RaccoonController : MonoBehaviour
     {
         animator.SetBool("on crouch", true);
         isCrouching = true;
-        Debug.Log("crouch");
     }
 
     private void OnStandUp(InputAction.CallbackContext callbackContext)
