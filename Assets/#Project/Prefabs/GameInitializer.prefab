@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1339052945324390761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7072347622062463848}
+  - component: {fileID: 5016166083442385618}
+  m_Layer: 0
+  m_Name: GameInitializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7072347622062463848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339052945324390761}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.70368, y: -2.49213, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5016166083442385618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339052945324390761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51823b6f1de8ad24e8137d2689d899d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameInitializer
+  cameraManager: {fileID: 7782616561748416400, guid: ac5c2a8b25228164fa30c8495a1e41e5, type: 3}
+  player: {fileID: 7421189329280758378, guid: 11e12a944da1c0e43a509a0ca488fe9b, type: 3}
+  actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  rock: {fileID: 3289669088408575300, guid: d8fbddcfa5e7c1440aca926dd48ebe66, type: 3}
+  barrel: {fileID: 7713479189521252009, guid: 5df4925512347f643a05bb41f7a73dee, type: 3}
+  tree: {fileID: 2067313742234780347, guid: 99502b7a2e04ee4478078c02478ec8a4, type: 3}
+  possibleLocations: {fileID: 6619216007406577755, guid: ac6693dabc1bf254b860936d37b095fb, type: 3}
+  gameManager: {fileID: 2122999923858279544, guid: ab160aa1111f93e428f733e940b9be66, type: 3}
+  gameData: {fileID: 11400000, guid: 88a0c7e24fcfb114fac9db734b0cb151, type: 2}
