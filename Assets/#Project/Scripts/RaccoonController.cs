@@ -21,19 +21,6 @@ public class RaccoonController : MonoBehaviour
     private Collider2D coll;
     private Vector3 startPosition;
 
-    // void OnEnable()
-    // {
-    //     actions.FindActionMap("Raccoon").Enable();
-    //     actions.FindActionMap("Raccoon").FindAction("Crouch").performed += OnCrouch;
-    //     actions.FindActionMap("Raccoon").FindAction("Crouch").canceled += OnStandUp;
-    // }
-    // void OnDisable()
-    // {
-    //     actions.FindActionMap("Raccoon").Disable();
-    //     actions.FindActionMap("Raccoon").FindAction("Crouch").performed -= OnCrouch;
-    //     actions.FindActionMap("Raccoon").FindAction("Crouch").canceled -= OnStandUp;
-    // }
-
     public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position)
     {
         this.gameManager = gameManager;
@@ -49,9 +36,10 @@ public class RaccoonController : MonoBehaviour
         coll = GetComponent<Collider2D>();
 
         move = actions.FindActionMap("Raccoon").FindAction("Move");
-        // actions.FindActionMap("Raccoon").Enable();
-        // actions.FindActionMap("Raccoon").FindAction("Crouch").performed += OnCrouch;
-        // actions.FindActionMap("Raccoon").FindAction("Crouch").canceled += OnStandUp;
+        actions.FindActionMap("Raccoon").FindAction("Pause").performed += OnPause;
+        actions.FindActionMap("Raccoon").FindAction("Interact").performed += OnInteract;
+        actions.FindActionMap("Raccoon").FindAction("Crouch").performed += OnCrouch;
+        actions.FindActionMap("Raccoon").FindAction("Crouch").canceled += OnStandUp;
 
     }
     
@@ -102,6 +90,15 @@ public class RaccoonController : MonoBehaviour
         {
             // CaughtAnOpossum();
         }
+    }
+    private void OnPause(InputAction.CallbackContext callbackContext)
+    {
+        gameManager.Pause();
+    }
+    private void OnInteract(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("intercact");
+        
     }
 
 }
