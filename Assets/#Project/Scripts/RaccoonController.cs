@@ -9,6 +9,12 @@ using UnityEngine.InputSystem;
 
 public class RaccoonController : MonoBehaviour
 {
+    private const string ACTION_MAP = "Raccoon";
+    private const string ACTION_MOVE = "Move";
+    private const string PAUSE = "Pause";
+    private const string ACTION_CROUCH = "Crouch";
+    private const string ACTION_INTERACT = "Interact";
+
     // private UIManager uI;
     private GameManager gameManager;
     private InputActionAsset actions;
@@ -35,14 +41,29 @@ public class RaccoonController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
 
-        move = actions.FindActionMap("Raccoon").FindAction("Move");
-        actions.FindActionMap("Raccoon").FindAction("Pause").performed += OnPause;
-        actions.FindActionMap("Raccoon").FindAction("Interact").performed += OnInteract;
-        actions.FindActionMap("Raccoon").FindAction("Crouch").performed += OnCrouch;
-        actions.FindActionMap("Raccoon").FindAction("Crouch").canceled += OnStandUp;
+        move = actions.FindActionMap(ACTION_MAP).FindAction(ACTION_MOVE);
 
     }
-    
+
+    void OnEnable()
+    {
+        actions.FindActionMap(ACTION_MAP).Enable();
+        actions.FindActionMap(ACTION_MAP).FindAction(PAUSE).performed += OnPause;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_INTERACT).performed += OnInteract;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).performed += OnCrouch;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).canceled += OnStandUp;
+
+    }
+
+
+    void OnDisable()
+    {
+        actions.FindActionMap(ACTION_MAP).Disable();
+        actions.FindActionMap(ACTION_MAP).FindAction(PAUSE).performed -= OnPause;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_INTERACT).performed -= OnInteract;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).performed -= OnCrouch;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).canceled -= OnStandUp;
+    }
     private void PlayerInstantiate(Vector3 position)
     {
         transform.position = position;

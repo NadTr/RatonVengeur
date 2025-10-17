@@ -46,10 +46,13 @@ public class GameInitializer : MonoBehaviour
     private void InitializeObjects()
     {
         // uIManager.Initialize(text_score, 0);
-        player.Initialize(gameManager,player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
         cameraManager.Initialize(player.transform);
         gameManager.Initialize(player, cameraManager);
-        hidingPlaces.Initialize(possibleLocations, prefabs);
         // gameManager.Initialize(uIManager, player);
+        hidingPlaces.Initialize(possibleLocations, prefabs);
+
+        player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
+        player.gameObject.SetActive(true);
+
     }
 }
