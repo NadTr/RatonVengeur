@@ -18,8 +18,10 @@ public class GameInitializer : MonoBehaviour
 
     [Space]
     [Header("HidingPlaces")]
-    [SerializeField] GameObject[] prefabs;
-    [SerializeField] GameObject possibleLocations;
+    [SerializeField] GameObject[] trees;
+    [SerializeField] GameObject treesPossibleLocations;
+    [SerializeField] GameObject[] objects;
+    [SerializeField] GameObject objectPossibleLocations;
     [SerializeField] HidingPlacesManager hidingPlaces;
 
     [Space]
@@ -54,7 +56,8 @@ public class GameInitializer : MonoBehaviour
         cameraManager.Initialize(player.transform);
         gameManager.Initialize(player, cameraManager);
         // gameManager.Initialize(uIManager, player);
-        hidingPlaces.Initialize(possibleLocations, prefabs);
+        hidingPlaces.Initialize(treesPossibleLocations, trees);
+        hidingPlaces.Initialize(objectPossibleLocations, objects);
 
         player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
         player.gameObject.SetActive(true);
