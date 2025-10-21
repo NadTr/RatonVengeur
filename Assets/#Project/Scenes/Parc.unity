@@ -134,11 +134,15 @@ PrefabInstance:
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: terrain
       value: 
-      objectReference: {fileID: 2631511472668500961, guid: efb18ed3f9ab10e44b6448a4519664cf, type: 3}
+      objectReference: {fileID: 5954684754468803660, guid: 6a87b4d1cb35ce94086e980b7878e07c, type: 3}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: hidingPlaces
       value: 
       objectReference: {fileID: 3152271291867041880, guid: e505cbb4cac4c214581ece829e0e156b, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: possibleLocations
+      value: 
+      objectReference: {fileID: 6619216007406577755, guid: 142ef6548a731924aa68940d467d0282, type: 3}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: prefabs.Array.size
       value: 3
