@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 
 public class GameInitializer : MonoBehaviour
 {
     [Header("Camera")]
     [SerializeField] CameraManager cameraManager;
+
+    [Header("Terrain")]
+    [SerializeField] Grid terrain;
 
     [Space]
     [Header("Player")]
@@ -37,6 +41,7 @@ public class GameInitializer : MonoBehaviour
     private void CreateObjects()
     {
         cameraManager = Instantiate(cameraManager);
+        terrain = Instantiate(terrain);
         gameManager = Instantiate(gameManager);
         player = Instantiate(player);
         hidingPlaces = Instantiate(hidingPlaces);
