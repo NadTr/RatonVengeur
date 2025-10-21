@@ -111,6 +111,10 @@ public class RaccoonController : MonoBehaviour
         {
             // CaughtAnOpossum();
         }
+        if (collision.CompareTag("Out"))
+        {
+            Debug.Log("try to get out");
+        }
     }
     private void OnPause(InputAction.CallbackContext callbackContext)
     {
