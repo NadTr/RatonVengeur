@@ -36,7 +36,7 @@ public class OpossumManager : MonoBehaviour
     void OnBecameInvisible()
     {
         this.gameObject.SetActive(false);
-        
+        gm.SetUpNewOpossumLocation();
 
     }
 }

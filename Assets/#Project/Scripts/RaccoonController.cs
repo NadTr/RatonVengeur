@@ -122,6 +122,7 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnPause(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log("pause");
         gameManager.Pause();
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
