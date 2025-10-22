@@ -18,6 +18,7 @@ public class GameInitializer : MonoBehaviour
 
     [Space]
     [Header("HidingPlaces")]
+    [SerializeField] OpossumManager opossum;
     [SerializeField] GameObject[] trees;
     [SerializeField] GameObject treesPossibleLocations;
     [SerializeField] GameObject[] objects;
@@ -47,6 +48,7 @@ public class GameInitializer : MonoBehaviour
         gameManager = Instantiate(gameManager);
         player = Instantiate(player);
         hidingPlaces = Instantiate(hidingPlaces);
+        opossum = Instantiate(opossum);
         // uIManager = Instantiate(uIManager);
     }
 
@@ -54,10 +56,11 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, cameraManager, hidingPlaces);
-        
-        hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects);
+        gameManager.Initialize(player, cameraManager, hidingPlaces, opossum);
 
+        hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects);
+        opossum.Initialize(gameManager);
+        
         player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
         player.gameObject.SetActive(true);
 

@@ -132,6 +132,10 @@ PrefabInstance:
       value: GameInitializer
       objectReference: {fileID: 0}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: opossum
+      value: 
+      objectReference: {fileID: 3000058748676762954, guid: 37b64d79d09006244a34afc9b50195d3, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: terrain
       value: 
       objectReference: {fileID: 2631511472668500961, guid: ecba464e5320223428adcd2068f4dea5, type: 3}
