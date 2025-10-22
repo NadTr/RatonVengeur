@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerSpeed: 2.5
+  playerStartPos: {x: 0, y: 0, z: -0.1}
