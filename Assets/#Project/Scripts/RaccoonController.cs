@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,7 @@ public class RaccoonController : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D coll;
     private Vector3 startPosition;
+    private Vector3 frontDirection;
 
     public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position)
     {
@@ -42,6 +44,8 @@ public class RaccoonController : MonoBehaviour
         coll = GetComponent<Collider2D>();
 
         move = actions.FindActionMap(ACTION_MAP).FindAction(ACTION_MOVE);
+        frontDirection = new();
+        frontDirection.z = transform.position.z;
 
     }
 
@@ -77,14 +81,14 @@ public class RaccoonController : MonoBehaviour
     private void Move()
     {
         Vector2 movement = Time.deltaTime * speed * move.ReadValue<Vector2>();
-         
-        spriteRenderer.flipX = movement.x < 0;
-
-        if (isCrouching) return;
-
+        // frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : 0f);
+        frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : (movement.y != 0f ? 0f : frontDirection.x));
+        frontDirection.y = movement.y > 0f ? 1f : (movement.y < 0f ? -1f :(movement.x != 0f ? 0f: frontDirection.y));
+        // frontDirection.x = movement.x > 0f ? 1f : -1f ;
+        // frontDirection.y = movement.y > 0f ? 1f : -1f;
+        // Debug.Log(frontDirection);
         transform.Translate( movement.x, movement.y,  0f, Space.World);
 
-        // animator.SetFloat("speed", Math.Abs(xAxis.ReadValue<float>()));
     }
 
     private void OnCrouch(InputAction.CallbackContext callbackContext)
@@ -122,8 +126,16 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("intercact");
-        
+        Debug.Log($"front : {frontDirection}");
+        Vector3 origin = transform.position + frontDirection.y * 0.5f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
+        // Debug.Log(origin);
+        RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.2f);
+        Debug.DrawRay(origin, frontDirection * 10, Color.red);
+        if (sideHit.collider != null)
+        {
+            Debug.Log($"intercact with {sideHit.collider.name}");
+            gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);
+        }
     }
 
 }

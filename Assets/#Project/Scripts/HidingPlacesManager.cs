@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class HidingPlacesManager : MonoBehaviour
 {
-    private GameObject possibleLocations;
-    private GameObject[] prefabs;
+    private GameManager gm;
     private Dictionary<Transform, GameObject> hidingPlacesLocations;
-    private Dictionary<Transform, GameObject> opossumLocations;
-    public void Initialize(GameObject possibleLocations, GameObject[] prefabs)
+    private Dictionary<Vector3, GameObject> opossumLocations;
+    public void Initialize(GameManager gm,GameObject treesLocations, GameObject[] treesPrefabs, GameObject objectsLocations, GameObject[] ObjectPrefabs)
     {
-        this.possibleLocations = possibleLocations;
-        this.prefabs = prefabs;
+        this.gm = gm;
         hidingPlacesLocations = new Dictionary<Transform, GameObject>();
-        SetUpLocations();
-        // SetUpOpossums(1);
+        opossumLocations = new Dictionary<Vector3, GameObject>();
+        SetUpLocations(treesLocations, treesPrefabs);
+        SetUpLocations(objectsLocations, ObjectPrefabs);
+        SetUpOpossums(3);
     }
-    private void SetUpLocations()
+    private void SetUpLocations(GameObject possibleLocations, GameObject[] prefabs)
     {
         for (int i = 0; i < possibleLocations.transform.childCount; i++)
         {
@@ -32,14 +32,23 @@ public class HidingPlacesManager : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             int rnd = Random.Range(0, hidingPlacesLocations.Count);
-            opossumLocations.Add(hidingPlacesLocations.ElementAt(rnd).Key, hidingPlacesLocations.ElementAt(rnd).Value);
+            Debug.Log($"{rnd} at position : {hidingPlacesLocations.ElementAt(rnd).Key.position}");
+            opossumLocations.Add(hidingPlacesLocations.ElementAt(rnd).Key.position, hidingPlacesLocations.ElementAt(rnd).Value);
         }
-        Debug.Log(opossumLocations);
     }
 
 
     public void Process()
     {
-        
+
+    }
+    public void IsItOnTheList(GameObject place)
+    {
+        // bool opo = opossumLocations.Contains<Transform, GameObject>(place.transform, place);
+        if (opossumLocations.ContainsKey(place.transform.position))
+        {
+            gm.SpawnOpossum(place.transform.position);
+            // Debug.Log($"List? : true \n place.transform = {place.transform.position}");
+        }
     }
 }

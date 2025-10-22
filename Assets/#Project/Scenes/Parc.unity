@@ -206,11 +206,11 @@ PrefabInstance:
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: treesPossibleLocations
       value: 
-      objectReference: {fileID: 647468188867885389, guid: e58b05442ee97c0498d4a3b4a3a09897, type: 3}
+      objectReference: {fileID: 6619216007406577755, guid: a812a1c966829d1489b1006678ff8dea, type: 3}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: objectPossibleLocations
       value: 
-      objectReference: {fileID: 4922718018561075831, guid: b418080e9b13ba841b09fe0403f2dd7c, type: 3}
+      objectReference: {fileID: 6619216007406577755, guid: 6a97a7c42e62ba74890cb4176114a312, type: 3}
     - target: {fileID: 7072347622062463848, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.70368

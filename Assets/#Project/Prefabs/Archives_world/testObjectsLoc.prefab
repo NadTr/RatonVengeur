@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4420166741246409464}
   m_Layer: 0
-  m_Name: ObjectLocations-small
+  m_Name: testObjectsLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

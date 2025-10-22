@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4644705259770168045}
   - component: {fileID: 4715940262081857020}
   m_Layer: 0
-  m_Name: Sprites 1_31
+  m_Name: Scarecrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

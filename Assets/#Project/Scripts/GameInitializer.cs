@@ -54,10 +54,9 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, cameraManager);
-        // gameManager.Initialize(uIManager, player);
-        hidingPlaces.Initialize(treesPossibleLocations, trees);
-        hidingPlaces.Initialize(objectPossibleLocations, objects);
+        gameManager.Initialize(player, cameraManager, hidingPlaces);
+        
+        hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects);
 
         player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
         player.gameObject.SetActive(true);

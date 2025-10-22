@@ -19,6 +19,7 @@ public class CameraManager : MonoBehaviour
         float posX = Mathf.Clamp(player.transform.position.x, -12f, 17f);
         float posY = Mathf.Clamp(player.transform.position.y, -6f, 25f);
         transform.position = new Vector3(posX, posY , - 1f);
+        // transform.Translate(Time.deltaTime * posX, Time.deltaTime * posY , 0f);
         // transform.position = new Vector3(player.transform.position.x, player.transform.position.y , - 1f);
     }
     public void Process()
