@@ -40,11 +40,11 @@ public class HidingPlacesManager : MonoBehaviour
         int rnd = Random.Range(0, hidingPlacesLocations.Count);
         while (opossumLocations.ContainsKey(hidingPlacesLocations.ElementAt(rnd).Key.position))
         {
-            Debug.Log(rnd);
+            // Debug.Log(rnd);
             rnd = Random.Range(0, hidingPlacesLocations.Count);
         }
 
-        Debug.Log($"{rnd} at position : {hidingPlacesLocations.ElementAt(rnd).Key.position}");
+        // Debug.Log($"{rnd} at position : {hidingPlacesLocations.ElementAt(rnd).Key.position}");
         opossumLocations.Add(hidingPlacesLocations.ElementAt(rnd).Key.position, hidingPlacesLocations.ElementAt(rnd).Value);
     }
 
@@ -53,6 +53,7 @@ public class HidingPlacesManager : MonoBehaviour
         if (opossumLocations.ContainsKey(place.transform.position))
         {
             gm.SpawnOpossum(place.transform.position);
+            opossumLocations.Remove(place.transform.position);
         }
     }
     

@@ -1006,15 +1006,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "edf3bd0e-6737-4fd2-940c-4c692bd73d3e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "83df640d-261a-4c35-ac33-5943a1aab035",
@@ -1024,7 +1015,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "Grumble",
                     "type": "Button",
                     "id": "116f47df-1998-4f7b-a5a0-01033e65df6f",
                     "expectedControlType": "",
@@ -1201,17 +1192,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d8a764e4-fcac-4ffe-b80c-afc9a914da6b",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "692c36f0-98ff-4be5-82cc-b1d818ea282f",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -1224,6 +1204,34 @@
                 {
                     "name": "",
                     "id": "86b02b5f-5de7-43c5-9efa-6bb4b118e256",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grumble",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UIandMenu",
+            "id": "79afc670-17d8-48ac-b59b-b0df528b8f16",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "106e5db1-09da-4a4c-9a73-90d1f9bc5178",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1ed70dc2-e842-4522-a02f-69d820ba9c84",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",

@@ -60,7 +60,8 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, cameraManager, hidingPlaces, opossum, pause);
+        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, opossum, pause, opossumCount);
+        gameManager.gameObject.SetActive(true);
         pause.Initialize(opossumCount);
 
         hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects, opossumCount);

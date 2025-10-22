@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
         {
             this.questText = questText; 
         }
-        // questText = this.transform.Find("QuestText").TryGetComponent<TMP_Text>();
         this.totalToCatch = totalToCatch;
         questText.SetText($"Nombre d'opossums trouvés : 0/{totalToCatch}");
     }

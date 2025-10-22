@@ -12,8 +12,7 @@ public class RaccoonController : MonoBehaviour
 {
     private const string ACTION_MAP = "Raccoon";
     private const string ACTION_MOVE = "Move";
-    private const string PAUSE = "Pause";
-    private const string ACTION_CROUCH = "Crouch";
+    private const string ACTION_GRUMBLE = "Grumble";
     private const string ACTION_INTERACT = "Interact";
 
     // private UIManager uI;
@@ -21,7 +20,6 @@ public class RaccoonController : MonoBehaviour
     private InputActionAsset actions;
     private InputAction move;
     private float speed = 3f;
-    private bool isCrouching = false;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Rigidbody2D rb;
@@ -52,21 +50,16 @@ public class RaccoonController : MonoBehaviour
     void OnEnable()
     {
         actions.FindActionMap(ACTION_MAP).Enable();
-        actions.FindActionMap(ACTION_MAP).FindAction(PAUSE).performed += OnPause;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_GRUMBLE).performed += OnGrumble;
         actions.FindActionMap(ACTION_MAP).FindAction(ACTION_INTERACT).performed += OnInteract;
-        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).performed += OnCrouch;
-        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).canceled += OnStandUp;
-
     }
 
 
     void OnDisable()
     {
         actions.FindActionMap(ACTION_MAP).Disable();
-        actions.FindActionMap(ACTION_MAP).FindAction(PAUSE).performed -= OnPause;
+        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_GRUMBLE).performed -= OnGrumble;
         actions.FindActionMap(ACTION_MAP).FindAction(ACTION_INTERACT).performed -= OnInteract;
-        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).performed -= OnCrouch;
-        actions.FindActionMap(ACTION_MAP).FindAction(ACTION_CROUCH).canceled -= OnStandUp;
     }
     private void PlayerInstantiate(Vector3 position)
     {
@@ -84,23 +77,7 @@ public class RaccoonController : MonoBehaviour
         // frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : 0f);
         frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : (movement.y != 0f ? 0f : frontDirection.x));
         frontDirection.y = movement.y > 0f ? 1f : (movement.y < 0f ? -1f :(movement.x != 0f ? 0f: frontDirection.y));
-        // frontDirection.x = movement.x > 0f ? 1f : -1f ;
-        // frontDirection.y = movement.y > 0f ? 1f : -1f;
-        // Debug.Log(frontDirection);
         transform.Translate( movement.x, movement.y,  0f, Space.World);
-
-    }
-
-    private void OnCrouch(InputAction.CallbackContext callbackContext)
-    {
-        animator.SetBool("on crouch", true);
-        isCrouching = true;
-    }
-
-    private void OnStandUp(InputAction.CallbackContext callbackContext)
-    {
-        animator.SetBool("on crouch", false);
-        isCrouching = false;
     }
 
     // public void CaughtAnOpossum()
@@ -120,14 +97,17 @@ public class RaccoonController : MonoBehaviour
             Debug.Log("try to get out");
         }
     }
-    private void OnPause(InputAction.CallbackContext callbackContext)
+    private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("pause");
-        gameManager.Pause();
+        // Debug.Log("grmbllll");
+        // gameManager.StartleOpossum(this.transform);
+        //make a sound
+        //make an animation
+        gameManager.RaccoonGrumble(this.transform);
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log($"front : {frontDirection}");
+        // Debug.Log($"front : {frontDirection}");
         Vector3 origin = transform.position + frontDirection.y * 0.5f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
         // Debug.Log(origin);
         RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.2f);
@@ -135,7 +115,14 @@ public class RaccoonController : MonoBehaviour
         if (sideHit.collider != null)
         {
             Debug.Log($"intercact with {sideHit.collider.name}");
-            gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);
+            if (sideHit.collider.CompareTag("HidingPlace"))
+            {
+                gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);
+            }
+            if (sideHit.collider.CompareTag("Opossum"))
+            {
+                gameManager.CatchOpossum();
+            }
         }
     }
 
