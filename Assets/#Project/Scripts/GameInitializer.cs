@@ -65,7 +65,7 @@ public class GameInitializer : MonoBehaviour
         pause.Initialize(opossumCount);
 
         hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects, opossumCount);
-        opossum.Initialize(gameManager);
+        opossum.Initialize(gameManager, gameData.OpossumData.location_y, gameData.OpossumData.delaySpawn, gameData.OpossumData.delayStartled, gameData.OpossumData.runAwaySpeed);
 
         player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
         player.gameObject.SetActive(true);

@@ -49,11 +49,11 @@ public class GameManager : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext callbackContext)
     {
+        onPause = !onPause;
         Debug.Log(onPause);
         Time.timeScale = onPause? 0f : 1f;
         // player.gameObject.SetActive(!onPause);
         pauseMenu.gameObject.SetActive(onPause);
-        onPause = !onPause;
     }
 
     public void IsThereAnOpossumThere(GameObject place)

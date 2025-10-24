@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: Assembly-CSharp::GameData
   <PlayerData>k__BackingField: {fileID: 11400000, guid: 10c3baba6e14b7c4fa6f2dd7ee1a4b8a, type: 2}
+  <OpossumData>k__BackingField: {fileID: 11400000, guid: fd158a974a50e1f4da705f0f5932e37f, type: 2}
