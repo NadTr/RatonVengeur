@@ -23,26 +23,29 @@ public class OpossumManager : MonoBehaviour
     }
     public void Startled()
     {
-        Debug.Log("opossum startled");
-        isStartled = true;
-         StartCoroutine(StartledCoroutine());
+        if (gameObject.activeSelf)
+        {     
+            Debug.Log("opossum startled");
+            isStartled = true;
+            StartCoroutine(StartledCoroutine());
+        }
     }
     public void Caught()
     {
         Debug.Log("opossum caught");  
+        isCaught = true;
         this.gameObject.SetActive(false);
- 
     }
     private IEnumerator StartledCoroutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         isStartled = false;
         StartCoroutine(RunAway());  
     }
     private IEnumerator RunAway()
     {
         // while( transform.position)
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.2f);
         // transform.position += Time.deltaTime * 0.35f * Vector3.right;
 
         float chrono = 0f;
@@ -50,12 +53,13 @@ public class OpossumManager : MonoBehaviour
         while (chrono < 10f && !isStartled)
         {
             chrono += Time.deltaTime;
-            transform.position += Time.deltaTime * 1.5f * Vector3.right;
+            transform.position += Time.deltaTime * 2.5f * Vector3.right;
             yield return new WaitForEndOfFrame();
         }
     }
     void OnBecameInvisible()
     {
+        if (isCaught) return;
         this.gameObject.SetActive(false);
         gm.SetUpNewOpossumLocation();
 
