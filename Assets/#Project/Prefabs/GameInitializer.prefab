@@ -45,15 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameInitializer
   cameraManager: {fileID: 7782616561748416400, guid: ac5c2a8b25228164fa30c8495a1e41e5, type: 3}
-  terrain: {fileID: 0}
+  terrain: {fileID: 2631511472668500961, guid: ecba464e5320223428adcd2068f4dea5, type: 3}
   player: {fileID: 7421189329280758378, guid: 11e12a944da1c0e43a509a0ca488fe9b, type: 3}
   actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   opossumCount: 5
   opossum: {fileID: 3000058748676762954, guid: 37b64d79d09006244a34afc9b50195d3, type: 3}
-  trees: []
-  treesPossibleLocations: {fileID: 0}
-  objects: []
-  objectPossibleLocations: {fileID: 0}
+  trees:
+  - {fileID: 5641824534065221594, guid: 8b9afd695336bad469bebd20d4a7f502, type: 3}
+  - {fileID: 170712332969864325, guid: 6cd62fc9287cfe144a8b0f9fd73558c4, type: 3}
+  - {fileID: 7147885903017128883, guid: a0fee5f5d37a6914599754f4c8ef19b1, type: 3}
+  - {fileID: 4933091540894007138, guid: 3d7c495d6374d6d4283dd0987404bf5d, type: 3}
+  treesPossibleLocations: {fileID: 6619216007406577755, guid: c430294ce5760f24f8b296984caa84d4, type: 3}
+  objects:
+  - {fileID: 2765712833961419719, guid: 162b842ccc359c4499540beecab57d80, type: 3}
+  - {fileID: 4006753884609830111, guid: e63b30800fbfb974e9786ccd66ca647b, type: 3}
+  - {fileID: 3678284724444144337, guid: 6948dee8d002e6a4db06f5dbedda2c4a, type: 3}
+  - {fileID: 6100100390192720586, guid: 45188dd7addd9b74094d8ff8e85828a4, type: 3}
+  objectPossibleLocations: {fileID: 6619216007406577755, guid: 95bcec67d228c074dadf2ed6b8d86949, type: 3}
   hidingPlaces: {fileID: 3152271291867041880, guid: e505cbb4cac4c214581ece829e0e156b, type: 3}
   gameManager: {fileID: 2122999923858279544, guid: ab160aa1111f93e428f733e940b9be66, type: 3}
   pause: {fileID: -3636605073715993140, guid: d2216b3de9a99ae4d9aa9ff2227bfa10, type: 3}
