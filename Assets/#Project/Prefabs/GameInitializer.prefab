@@ -48,7 +48,8 @@ MonoBehaviour:
   terrain: {fileID: 0}
   player: {fileID: 7421189329280758378, guid: 11e12a944da1c0e43a509a0ca488fe9b, type: 3}
   actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  opossum: {fileID: 0}
+  opossumCount: 5
+  opossum: {fileID: 3000058748676762954, guid: 37b64d79d09006244a34afc9b50195d3, type: 3}
   trees: []
   treesPossibleLocations: {fileID: 0}
   objects: []
