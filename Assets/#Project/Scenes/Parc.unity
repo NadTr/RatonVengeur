@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: footsteps
       value: 
       objectReference: {fileID: 4496780405414038239, guid: e0a7f0a69d12ba945aadb91b2ff2269f, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: lucyLocations
+      value: 
+      objectReference: {fileID: 6595353795461147656, guid: 8274783b99ee5594b9478201c84d7440, type: 3}
     - target: {fileID: 7072347622062463848, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.70368

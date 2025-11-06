@@ -138,6 +138,10 @@ public class RaccoonController : MonoBehaviour
         if (sideHit.collider != null)
         {
             // Debug.Log($"intercact with {sideHit.collider.name}");
+            if (sideHit.collider.CompareTag("Lucy"))
+            {
+                gameManager.LucyDialogue();
+            }
             if (sideHit.collider.CompareTag("HidingPlace"))
             {
                 gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);

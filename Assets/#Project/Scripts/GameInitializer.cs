@@ -20,6 +20,7 @@ public class GameInitializer : MonoBehaviour
     [Header("PNJ Sprites")]
     [SerializeField] LucyBehavior lucy;
     [SerializeField] BabyOpossumBehavior babyOpossum;
+    [SerializeField] GameObject lucyLocations;
     [Space]
 
     [Header("HidingPlaces")]
@@ -82,7 +83,7 @@ public class GameInitializer : MonoBehaviour
         soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter);
         gameManager.gameObject.SetActive(true);
         pause.Initialize(opossumCount);
-        lucy.Initialize(gameManager, lucy);
+        lucy.Initialize(gameManager, lucy, lucyLocations);
 
         hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects, opossumCount);
         babyOpossum.Initialize(gameManager, gameData.OpossumData.location_y, gameData.OpossumData.delaySpawn, gameData.OpossumData.delayStartled, gameData.OpossumData.runAwaySpeed);

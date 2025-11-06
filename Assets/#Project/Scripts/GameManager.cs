@@ -65,17 +65,6 @@ public class GameManager : MonoBehaviour
         pauseMenu.gameObject.SetActive(onPause);
     }
 
-    public void IsThereAnOpossumThere(GameObject place)
-    {
-        // if(l)
-        hidingPlacesManager.IsItOnTheList(place);
-    }
-    public void SpawnOpossum(Vector3 localisation)
-    {
-        babyOpossum.SpawnIn(localisation);
-        isOpossumSpawned = true;
-        Debug.Log($"Spawn an opossum in {localisation}");
-    }
     public void RaccoonGrumble(Transform raccoon)
     {
         Vector3 distance3 = raccoon.position - babyOpossum.transform.position;
@@ -91,6 +80,24 @@ public class GameManager : MonoBehaviour
             soundManager.RaccoonNoise("chatter");
         }
     }
+
+    public void LucyDialogue()
+    {
+        //doSomething
+    }
+    public void IsThereAnOpossumThere(GameObject place)
+    {
+        // if(l)
+        hidingPlacesManager.IsItOnTheList(place);
+    }
+    public void SpawnOpossum(Vector3 localisation)
+    {
+        babyOpossum.SpawnIn(localisation);
+        isOpossumSpawned = true;
+        Debug.Log($"Spawn an opossum in {localisation}");
+    }
+    
+
     public void StartleOpossum()
     {
         babyOpossum.Startled();
