@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     SoundManager soundManager;
     AudioSource bgMusic;
     bool onPause;
+    bool isOpossumSpawned;
     private int numberOfOpossumCaught;
     private int numberOfOpossumToCatch;
     public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, OpossumManager opossum, UIManager pauseMenu, int opossumCount, SoundManager soundManager)
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
         this.soundManager = soundManager;
         // this.bgMusic = bgMusic;
 
+        isOpossumSpawned = false;
         onPause = false;
         numberOfOpossumCaught = 0;
         numberOfOpossumToCatch = opossumCount;
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void SpawnOpossum(Vector3 localisation)
     {
         opossum.SpawnIn(localisation);
+        isOpossumSpawned = true;
         Debug.Log($"Spawn an opossum in {localisation}");
     }
     public void RaccoonGrumble(Transform raccoon)
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour
         Vector3 distance3 = raccoon.position - opossum.transform.position;
         float distance = Vector3.Distance(raccoon.position, opossum.transform.position);
         // Debug.Log($"distance = {distance}");
-        if (distance < 2f)
+        if (distance < 2f && isOpossumSpawned)
         {
             StartleOpossum();
             soundManager.RaccoonNoise("grumble");
@@ -95,6 +98,8 @@ public class GameManager : MonoBehaviour
 
         opossum.Caught();
         pauseMenu.UpdateQuest(numberOfOpossumCaught);
+        isOpossumSpawned = false;
+
         if(numberOfOpossumCaught == numberOfOpossumToCatch)
         {
             Debug.Log("All opossum caught!");
@@ -104,6 +109,8 @@ public class GameManager : MonoBehaviour
     public void SetUpNewOpossumLocation()
     {
         hidingPlacesManager.SaveAnotherLocation();
+        isOpossumSpawned = false;
+
     }
 
 }
