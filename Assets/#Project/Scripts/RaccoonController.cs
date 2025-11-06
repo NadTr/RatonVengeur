@@ -26,18 +26,18 @@ public class RaccoonController : MonoBehaviour
     private Collider2D coll;
     private Vector3 startPosition;
     private Vector3 frontDirection;
-    private AudioSource raccoonGrumble;
+    // private AudioSource raccoonGrumble;
     private AudioSource footsteps;
     private float footStepDelay = 0.3f;
     private float timer = 0f;
 
-    public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position, AudioSource raccoonGrumble, AudioSource footsteps)
+    public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position,AudioSource footsteps)
     {
         this.gameManager = gameManager;
         this.actions = actions;
         this.speed = playerSpeed;
         this.startPosition = position;
-        this.raccoonGrumble = raccoonGrumble;
+        // this.raccoonGrumble = raccoonGrumble;
         this.footsteps = footsteps;
 
         PlayerInstantiate(startPosition);
@@ -101,31 +101,34 @@ public class RaccoonController : MonoBehaviour
         }
     }
 
-    // public void CaughtAnOpossum()
-    // {
-    //     score += 1;
-    //     uI.IncreaseCounter();
-    // }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Opossum"))
         {
             // CaughtAnOpossum();
         }
+        if (collision.CompareTag("WaterFall"))
+        {
+            Debug.Log("WaterFall");
+            gameManager.WaterFallSound(false);
+        }
         if (collision.CompareTag("Out"))
         {
             Debug.Log("try to get out");
         }
     }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WaterFall"))
+        {
+            gameManager.WaterFallSound(true);        
+        }
+        
+    }
     private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("grmbllll");
-        // gameManager.StartleOpossum(this.transform);
-        //make a sound
+        // Debug.Log("grmbllll");
         //make an animation
-        // AudioSource.PlayClipAtPoint(raccoonGrumble, Camera.main.transform.position);
-        // raccoonGrumble.Play();
         gameManager.RaccoonGrumble(this.transform);
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
@@ -152,5 +155,6 @@ public class RaccoonController : MonoBehaviour
             }
         }
     }
+
 
 }

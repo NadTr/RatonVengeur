@@ -8,6 +8,7 @@ TagManager:
   - Out
   - HidingPlace
   - Lucy
+  - WaterFall
   layers:
   - Default
   - TransparentFX
