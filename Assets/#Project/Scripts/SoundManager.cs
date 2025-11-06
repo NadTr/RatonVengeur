@@ -3,14 +3,18 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private AudioSource bgMusic;
-    void Initialize(AudioSource bgMusic)
+    private AudioSource raccoonGrumble;
+    private AudioSource raccoonChatter;
+
+    public void Initialize(AudioSource bgMusic, AudioSource raccoonGrumble, AudioSource raccoonChatter)
     {
         this.bgMusic = bgMusic;
-        bgMusic = GetComponent<AudioSource>();
-        bgMusic.Play();
+        this.raccoonGrumble = raccoonGrumble;
+        this.raccoonChatter = raccoonChatter;
+        // bgMusic.Play();
     }
 
-    void Process()
+    public void Process()
     {
 
     }
@@ -19,11 +23,11 @@ public class SoundManager : MonoBehaviour
     {
         if (noiseType == "grumble")
         {
-            //grumble.Play()
+            raccoonGrumble.Play();
         }
         else if(noiseType == "chatter")
         {
-            //chatter.Play()
+            raccoonChatter.Play();
             
         }
     }

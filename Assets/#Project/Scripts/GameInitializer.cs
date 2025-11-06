@@ -29,6 +29,7 @@ public class GameInitializer : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioSource bgMusic;
     [SerializeField] private AudioSource raccoonGrumble;
+    [SerializeField] private AudioSource raccoonChatter;
     [SerializeField] private AudioSource footsteps;
 
 
@@ -37,6 +38,7 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] GameManager gameManager;
     // [SerializeField] UIManager uIManager;
     // [SerializeField] TMP_Text text_score ;
+    [SerializeField] SoundManager soundManager;
     [SerializeField] UIManager pause;
 
     [Space]
@@ -63,6 +65,7 @@ public class GameInitializer : MonoBehaviour
 
         bgMusic = Instantiate(bgMusic);
         raccoonGrumble = Instantiate(raccoonGrumble);
+        raccoonChatter = Instantiate(raccoonChatter);
         footsteps = Instantiate(footsteps);
     }
 
@@ -70,7 +73,8 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, opossum, pause, opossumCount, bgMusic);
+        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, opossum, pause, opossumCount, soundManager);
+        soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter);
         gameManager.gameObject.SetActive(true);
         pause.Initialize(opossumCount);
 

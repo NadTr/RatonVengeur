@@ -88,7 +88,7 @@ public class RaccoonController : MonoBehaviour
         if (movement.sqrMagnitude > 0)
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
+            // Debug.Log(timer);
             if (timer >= footStepDelay)
             {
                 footsteps.Play();
@@ -125,7 +125,7 @@ public class RaccoonController : MonoBehaviour
         //make a sound
         //make an animation
         // AudioSource.PlayClipAtPoint(raccoonGrumble, Camera.main.transform.position);
-        raccoonGrumble.Play();
+        // raccoonGrumble.Play();
         gameManager.RaccoonGrumble(this.transform);
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)

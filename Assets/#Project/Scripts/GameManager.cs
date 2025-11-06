@@ -13,11 +13,12 @@ public class GameManager : MonoBehaviour
     HidingPlacesManager hidingPlacesManager;
     OpossumManager opossum;
     UIManager pauseMenu;
+    SoundManager soundManager;
     AudioSource bgMusic;
     bool onPause;
     private int numberOfOpossumCaught;
     private int numberOfOpossumToCatch;
-    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, OpossumManager opossum, UIManager pauseMenu, int opossumCount, AudioSource bgMusic)
+    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, OpossumManager opossum, UIManager pauseMenu, int opossumCount, SoundManager soundManager)
     {
         this.player = player;
         this.actions = actions;
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour
         this.hidingPlacesManager = hidingPlacesManager;
         this.opossum = opossum;
         this.pauseMenu = pauseMenu;
-        this.bgMusic = bgMusic;
+        this.soundManager = soundManager;
+        // this.bgMusic = bgMusic;
 
         onPause = false;
         numberOfOpossumCaught = 0;
@@ -71,11 +73,16 @@ public class GameManager : MonoBehaviour
     public void RaccoonGrumble(Transform raccoon)
     {
         Vector3 distance3 = raccoon.position - opossum.transform.position;
-        float distance = Vector3.Distance (raccoon.position, opossum.transform.position);
-        Debug.Log($"distance = {distance}");
-        if(distance < 3f)
+        float distance = Vector3.Distance(raccoon.position, opossum.transform.position);
+        // Debug.Log($"distance = {distance}");
+        if (distance < 2f)
         {
             StartleOpossum();
+            soundManager.RaccoonNoise("grumble");
+        }
+        else
+        {
+            soundManager.RaccoonNoise("chatter");
         }
     }
     public void StartleOpossum()
@@ -91,6 +98,7 @@ public class GameManager : MonoBehaviour
         if(numberOfOpossumCaught == numberOfOpossumToCatch)
         {
             Debug.Log("All opossum caught!");
+            //make a sound and show something to notify that the quest is completed
         }
     }
     public void SetUpNewOpossumLocation()

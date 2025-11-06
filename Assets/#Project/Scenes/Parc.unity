@@ -223,6 +223,14 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 8747130337468762916, guid: 775254aa0b811d142ac67fa029e09e75, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: raccoonChatter
+      value: 
+      objectReference: {fileID: 6353273838883440595, guid: 0e653e7ab9bd3b447a25d43b5bbdf96a, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: raccoonGrumble
       value: 
       objectReference: {fileID: 5399203833867753405, guid: a53f0b94e8d53a2449757d861b278e05, type: 3}
