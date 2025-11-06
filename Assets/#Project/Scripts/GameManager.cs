@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     private InputAction pause;
     RaccoonController player;
     CameraManager cam;
+    LucyBehavior lucy;
     HidingPlacesManager hidingPlacesManager;
-    OpossumManager opossum;
+    BabyOpossumBehavior babyOpossum;
     UIManager pauseMenu;
     SoundManager soundManager;
     AudioSource bgMusic;
@@ -19,13 +20,14 @@ public class GameManager : MonoBehaviour
     bool isOpossumSpawned;
     private int numberOfOpossumCaught;
     private int numberOfOpossumToCatch;
-    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, OpossumManager opossum, UIManager pauseMenu, int opossumCount, SoundManager soundManager)
+    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, LucyBehavior lucy, BabyOpossumBehavior babyOpossum, UIManager pauseMenu, int opossumCount, SoundManager soundManager)
     {
         this.player = player;
         this.actions = actions;
         this.cam = cam;
+        this.lucy = lucy;
         this.hidingPlacesManager = hidingPlacesManager;
-        this.opossum = opossum;
+        this.babyOpossum = babyOpossum;
         this.pauseMenu = pauseMenu;
         this.soundManager = soundManager;
         // this.bgMusic = bgMusic;
@@ -65,18 +67,19 @@ public class GameManager : MonoBehaviour
 
     public void IsThereAnOpossumThere(GameObject place)
     {
+        // if(l)
         hidingPlacesManager.IsItOnTheList(place);
     }
     public void SpawnOpossum(Vector3 localisation)
     {
-        opossum.SpawnIn(localisation);
+        babyOpossum.SpawnIn(localisation);
         isOpossumSpawned = true;
         Debug.Log($"Spawn an opossum in {localisation}");
     }
     public void RaccoonGrumble(Transform raccoon)
     {
-        Vector3 distance3 = raccoon.position - opossum.transform.position;
-        float distance = Vector3.Distance(raccoon.position, opossum.transform.position);
+        Vector3 distance3 = raccoon.position - babyOpossum.transform.position;
+        float distance = Vector3.Distance(raccoon.position, babyOpossum.transform.position);
         // Debug.Log($"distance = {distance}");
         if (distance < 2f && isOpossumSpawned)
         {
@@ -90,13 +93,13 @@ public class GameManager : MonoBehaviour
     }
     public void StartleOpossum()
     {
-        opossum.Startled();
+        babyOpossum.Startled();
     }
     public void CatchOpossum()
     {
         numberOfOpossumCaught++;
 
-        opossum.Caught();
+        babyOpossum.Caught();
         pauseMenu.UpdateQuest(numberOfOpossumCaught);
         isOpossumSpawned = false;
 

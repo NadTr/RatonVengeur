@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-6068524300247242268
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: possum-sounds-1_{-6068524300247242268}
+  m_AudioClip: {fileID: 8300000, guid: ea1d276ae22aebd4982ae5c6f328d80f, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2406388028619362638
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: possum-sounds-2_{2406388028619362638}
+  m_AudioClip: {fileID: 8300000, guid: 7a698629a4d70a64482946f6ea39cd6a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4896611289757470344
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: possum-sounds-3_{4896611289757470344}
+  m_AudioClip: {fileID: 8300000, guid: 93cde99ebac23b54284a76899ff5c153, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Opossum
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -7.8855324, y: 17.55167}
+  m_PitchRandomizationRange: {x: -76.31156, y: 209.85689}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -6068524300247242268}
+  - {fileID: 2406388028619362638}
+  - {fileID: 4896611289757470344}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class OpossumManager : MonoBehaviour
+public class BabyOpossumBehavior : MonoBehaviour
 {
     GameManager gm;
     float location_y = -0.05f;

@@ -10,16 +10,20 @@ public class GameInitializer : MonoBehaviour
 
     [Header("Terrain")]
     [SerializeField] Grid terrain;
-
     [Space]
+
     [Header("Player")]
     [SerializeField] RaccoonController player;
     [SerializeField] private InputActionAsset actions;
-
     [Space]
+
+    [Header("PNJ Sprites")]
+    [SerializeField] LucyBehavior lucy;
+    [SerializeField] BabyOpossumBehavior babyOpossum;
+    [Space]
+
     [Header("HidingPlaces")]
     [SerializeField] int opossumCount = 5;
-    [SerializeField] OpossumManager opossum;
     [SerializeField] GameObject[] trees;
     [SerializeField] GameObject treesPossibleLocations;
     [SerializeField] GameObject[] objects;
@@ -59,8 +63,9 @@ public class GameInitializer : MonoBehaviour
         pause = Instantiate(pause);
 
         player = Instantiate(player);
+        lucy = Instantiate(lucy);
         hidingPlaces = Instantiate(hidingPlaces);
-        opossum = Instantiate(opossum);
+        babyOpossum = Instantiate(babyOpossum);
         // uIManager = Instantiate(uIManager);
 
         bgMusic = Instantiate(bgMusic);
@@ -73,13 +78,14 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, opossum, pause, opossumCount, soundManager);
+        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pause, opossumCount, soundManager);
         soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter);
         gameManager.gameObject.SetActive(true);
         pause.Initialize(opossumCount);
+        lucy.Initialize(gameManager, lucy);
 
         hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects, opossumCount);
-        opossum.Initialize(gameManager, gameData.OpossumData.location_y, gameData.OpossumData.delaySpawn, gameData.OpossumData.delayStartled, gameData.OpossumData.runAwaySpeed);
+        babyOpossum.Initialize(gameManager, gameData.OpossumData.location_y, gameData.OpossumData.delaySpawn, gameData.OpossumData.delayStartled, gameData.OpossumData.runAwaySpeed);
 
         player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos, raccoonGrumble, footsteps);
         player.gameObject.SetActive(true);
