@@ -211,9 +211,21 @@ PrefabInstance:
       value: GameInitializer
       objectReference: {fileID: 0}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: bgMusic
+      value: 
+      objectReference: {fileID: 5920085497081982841, guid: a72489b15cca70f41970b3bfc2489c0a, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: footsteps
+      value: 
+      objectReference: {fileID: 355213024542282680, guid: 19eaa91e56b129b4ba380db75be45ad3, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: opossumCount
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: raccoonGrumble
+      value: 
+      objectReference: {fileID: 5399203833867753405, guid: a53f0b94e8d53a2449757d861b278e05, type: 3}
     - target: {fileID: 7072347622062463848, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.70368

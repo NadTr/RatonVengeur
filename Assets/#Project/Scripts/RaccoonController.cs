@@ -26,13 +26,19 @@ public class RaccoonController : MonoBehaviour
     private Collider2D coll;
     private Vector3 startPosition;
     private Vector3 frontDirection;
+    private AudioSource raccoonGrumble;
+    private AudioSource footsteps;
+    private float footStepDelay = 0.2f;
+    private float timer = 0f;
 
-    public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position)
+    public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position, AudioSource raccoonGrumble, AudioSource footsteps)
     {
         this.gameManager = gameManager;
         this.actions = actions;
         this.speed = playerSpeed;
         this.startPosition = position;
+        this.raccoonGrumble = raccoonGrumble;
+        this.footsteps = footsteps;
 
         PlayerInstantiate(startPosition);
 
@@ -69,6 +75,7 @@ public class RaccoonController : MonoBehaviour
     public void Process()
     {
         Move();
+                   
     }
 
     private void Move()
@@ -77,7 +84,21 @@ public class RaccoonController : MonoBehaviour
         // frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : 0f);
         frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : (movement.y != 0f ? 0f : frontDirection.x));
         frontDirection.y = movement.y > 0f ? 1f : (movement.y < 0f ? -1f :(movement.x != 0f ? 0f: frontDirection.y));
-        transform.Translate( movement.x, movement.y,  0f, Space.World);
+        transform.Translate(movement.x, movement.y, 0f, Space.World);
+        if (movement.sqrMagnitude > 0)
+        {
+            timer += Time.deltaTime;
+            Debug.Log(timer);
+            if (timer >= footStepDelay)
+            {
+                footsteps.Play();
+                timer = 0f;
+            }
+        }
+        else
+        {
+            timer = 0f;
+        }
     }
 
     // public void CaughtAnOpossum()
@@ -99,10 +120,12 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
-        // Debug.Log("grmbllll");
+        Debug.Log("grmbllll");
         // gameManager.StartleOpossum(this.transform);
         //make a sound
         //make an animation
+        // AudioSource.PlayClipAtPoint(raccoonGrumble, Camera.main.transform.position);
+        raccoonGrumble.Play();
         gameManager.RaccoonGrumble(this.transform);
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
@@ -114,7 +137,7 @@ public class RaccoonController : MonoBehaviour
         Debug.DrawRay(origin, frontDirection * 10, Color.red);
         if (sideHit.collider != null)
         {
-            Debug.Log($"intercact with {sideHit.collider.name}");
+            // Debug.Log($"intercact with {sideHit.collider.name}");
             if (sideHit.collider.CompareTag("HidingPlace"))
             {
                 gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);

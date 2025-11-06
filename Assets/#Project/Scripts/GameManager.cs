@@ -13,10 +13,11 @@ public class GameManager : MonoBehaviour
     HidingPlacesManager hidingPlacesManager;
     OpossumManager opossum;
     UIManager pauseMenu;
+    AudioSource bgMusic;
     bool onPause;
     private int numberOfOpossumCaught;
     private int numberOfOpossumToCatch;
-    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, OpossumManager opossum, UIManager pauseMenu, int opossumCount)
+    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, OpossumManager opossum, UIManager pauseMenu, int opossumCount, AudioSource bgMusic)
     {
         this.player = player;
         this.actions = actions;
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
         this.hidingPlacesManager = hidingPlacesManager;
         this.opossum = opossum;
         this.pauseMenu = pauseMenu;
+        this.bgMusic = bgMusic;
+
         onPause = false;
         numberOfOpossumCaught = 0;
         numberOfOpossumToCatch = opossumCount;
