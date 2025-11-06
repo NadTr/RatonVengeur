@@ -6,8 +6,8 @@ AudioContainerElement:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: angry-raccoon-cut_{2646127276694826342}
-  m_AudioClip: {fileID: 8300000, guid: e91334cedfdf2f94ca1127ea8635dc0d, type: 3}
+  m_Name: angry-raccoon-shorter_{2646127276694826342}
+  m_AudioClip: {fileID: 8300000, guid: 69d39f56211861c45bdce10bfc423cda, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370

@@ -28,7 +28,7 @@ public class RaccoonController : MonoBehaviour
     private Vector3 frontDirection;
     private AudioSource raccoonGrumble;
     private AudioSource footsteps;
-    private float footStepDelay = 0.2f;
+    private float footStepDelay = 0.3f;
     private float timer = 0f;
 
     public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position, AudioSource raccoonGrumble, AudioSource footsteps)
