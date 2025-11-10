@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgMusic;
     private AudioSource raccoonGrumble;
     private AudioSource raccoonChatter;
+    private AudioSource rummageSound;
     private AudioSource waterFallSound;
     private AudioMixer audioMixer;
     private AudioMixerSnapshot snapshotNormal;
@@ -13,11 +14,12 @@ public class SoundManager : MonoBehaviour
     private float transitionTime = 0.2f;
    private float maxDistance = 10f;
     private AnimationCurve animationCurve;
-    public void Initialize(AudioSource bgMusic, AudioSource raccoonGrumble, AudioSource raccoonChatter, AudioSource waterFallSound, AudioMixerSnapshot snapshotWaterFall, AudioMixerSnapshot snapshotNormal, AudioMixer audioMixer, AnimationCurve animationCurve)
+    public void Initialize(AudioSource bgMusic, AudioSource raccoonGrumble, AudioSource raccoonChatter, AudioSource rummageSound, AudioSource waterFallSound, AudioMixerSnapshot snapshotWaterFall, AudioMixerSnapshot snapshotNormal, AudioMixer audioMixer, AnimationCurve animationCurve)
     {
         this.bgMusic = bgMusic;
         this.raccoonGrumble = raccoonGrumble;
         this.raccoonChatter = raccoonChatter;
+        this.rummageSound = rummageSound;
         this.waterFallSound = waterFallSound;
         this.snapshotNormal = snapshotNormal;
         this.snapshotWaterFall = snapshotWaterFall;
@@ -42,6 +44,11 @@ public class SoundManager : MonoBehaviour
             raccoonChatter.Play();
 
         }
+    }
+
+    public void rummageSoundPlay()
+    {
+        rummageSound.Play();
     }
 
 

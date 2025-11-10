@@ -14,7 +14,7 @@ public class HidingPlacesManager : MonoBehaviour
         opossumLocations = new Dictionary<Vector3, GameObject>();
         SetUpLocations(treesLocations, treesPrefabs);
         SetUpLocations(objectsLocations, ObjectPrefabs);
-        SetUpOpossums(opossumCount);
+        // SetUpOpossums(opossumCount);
     }
     private void SetUpLocations(GameObject possibleLocations, GameObject[] prefabs)
     {
@@ -27,7 +27,7 @@ public class HidingPlacesManager : MonoBehaviour
         }
     }
 
-    private void SetUpOpossums(int n)
+    public void SetUpOpossums(int n)
     {
         for (int i = 0; i < n; i++)
         {

@@ -6,16 +6,16 @@ public class LucyBehavior : MonoBehaviour
     LucyBehavior lucy;
     GameObject lucyLocations;
     bool isOnScreen;
-    bool isQuestStarted;
-    bool isQuestCompleted ;
+    public bool IsQuestStarted  { get; set; }
+    public bool IsQuestCompleted  { get; set; }
     public void Initialize(GameManager gm, LucyBehavior lucy, GameObject lucyLocations)
     {
         this.gm = gm;
         this.lucy = lucy;
         this.lucyLocations = lucyLocations;
         isOnScreen = false;
-        isQuestStarted = false;
-        isQuestCompleted = false;
+        IsQuestStarted = false;
+        IsQuestCompleted = false;
         // GetLocationsList();
         Appear();
     }
@@ -41,24 +41,28 @@ public class LucyBehavior : MonoBehaviour
     }
     public void MarkQuestAsCompleted()
     {
-        isQuestCompleted = true;
+        IsQuestCompleted = true;
     }
     public void LucyDialogue()
     {
-        if (!isQuestStarted)
+        if (!IsQuestStarted)
         {
             //start quest dialogue
-            isQuestStarted = true;
+            Debug.Log("debut de la quête");
+            gm.StartOpossumQuest();
+            IsQuestStarted = true;
         }
         else
         {
-            if (isQuestCompleted)
+            if (IsQuestCompleted)
             {
+                Debug.Log("fin de la quête");
                 //start dialogue end of quest 
                 //gm.OpenWayToNextScene()
             }
             else
             {
+                Debug.Log("conseil");
                 //start dialogue to give hint to use A to startle the babies
             }
         }

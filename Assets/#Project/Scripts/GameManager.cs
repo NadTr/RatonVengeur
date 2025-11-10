@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
             soundManager.RaccoonNoise("chatter");
         }
     }
+    
     public void WaterFallSound(Transform playerTransform, bool playerIsClose)
     {
         soundManager.WaterFallSoundBool(playerIsClose);
@@ -88,12 +89,18 @@ public class GameManager : MonoBehaviour
 
     public void LucyDialogue()
     {
-        //doSomething
+        lucy.LucyDialogue();
+    }
+    public void StartOpossumQuest()
+    {
+        pauseMenu.LaunchOpossumQuest(numberOfOpossumToCatch);
+        hidingPlacesManager.SetUpOpossums(numberOfOpossumToCatch);
     }
     public void IsThereAnOpossumThere(GameObject place)
     {
-        // if(l)
         hidingPlacesManager.IsItOnTheList(place);
+        soundManager.rummageSoundPlay();
+
     }
     public void SpawnOpossum(Vector3 localisation)
     {
@@ -112,12 +119,13 @@ public class GameManager : MonoBehaviour
         numberOfOpossumCaught++;
 
         babyOpossum.Caught();
-        pauseMenu.UpdateQuest(numberOfOpossumCaught);
+        pauseMenu.UpdateOpossumQuest(numberOfOpossumCaught);
         isOpossumSpawned = false;
 
         if(numberOfOpossumCaught == numberOfOpossumToCatch)
         {
             Debug.Log("All opossum caught!");
+            lucy.MarkQuestAsCompleted();
             //make a sound and show something to notify that the quest is completed
         }
     }
