@@ -15,12 +15,15 @@ public class UIManager : MonoBehaviour
     }
     public void LaunchOpossumQuest(int totalToCatch)
     {
-
         this.totalToCatch = totalToCatch;
         questText.SetText($"Nombre d'opossums trouvés : 0/{totalToCatch}");
     }
     public void UpdateOpossumQuest(int count)
     {
         questText.SetText($"Nombre d'opossums trouvés : {count}/{totalToCatch}");
+    }
+    public void EndOpossumQuest()
+    {
+        questText.SetText($" ");
     }
 }

@@ -45,26 +45,26 @@ public class LucyBehavior : MonoBehaviour
     }
     public void LucyDialogue()
     {
-        if (!IsQuestStarted)
-        {
-            //start quest dialogue
-            Debug.Log("debut de la quête");
-            gm.StartOpossumQuest();
-            IsQuestStarted = true;
-        }
-        else
-        {
-            if (IsQuestCompleted)
-            {
-                Debug.Log("fin de la quête");
-                //start dialogue end of quest 
-                //gm.OpenWayToNextScene()
-            }
-            else
-            {
-                Debug.Log("conseil");
-                //start dialogue to give hint to use A to startle the babies
-            }
-        }
+        // if (!IsQuestStarted)
+        // {
+        //     //start quest dialogue
+        //     Debug.Log("debut de la quête");
+        //     gm.StartOpossumQuest();
+        //     IsQuestStarted = true;
+        // }
+        // else
+        // {
+        //     if (IsQuestCompleted)
+        //     {
+        //         Debug.Log("fin de la quête");
+        //         //start dialogue end of quest 
+        //         //gm.OpenWayToNextScene()
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("conseil");
+        //         //start dialogue to give hint to use A to startle the babies
+        //     }
+        // }
     }
 }

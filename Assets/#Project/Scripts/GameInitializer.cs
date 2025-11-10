@@ -55,7 +55,8 @@ public class GameInitializer : MonoBehaviour
     // [SerializeField] UIManager uIManager;
     // [SerializeField] TMP_Text text_score ;
     [SerializeField] SoundManager soundManager;
-    [SerializeField] UIManager pause;
+    [SerializeField] UIManager pauseCanva;
+    [SerializeField] DialogueManager dialogueCanva;
 
     [Space]
     [Header("GameData")]
@@ -74,7 +75,8 @@ public class GameInitializer : MonoBehaviour
         waterfallPosition = Instantiate(waterfallPosition);
 
         gameManager = Instantiate(gameManager);
-        pause = Instantiate(pause);
+        pauseCanva = Instantiate(pauseCanva);
+        dialogueCanva = Instantiate(dialogueCanva);
 
         player = Instantiate(player);
         lucy = Instantiate(lucy);
@@ -94,10 +96,13 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pause, opossumCount, soundManager);
+        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pauseCanva, dialogueCanva, opossumCount, soundManager);
         soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter, rummageSound, waterFallSound, snapshotNormal, snapshotWaterFall, audioMixer, animationCurveWaterFall);
         gameManager.gameObject.SetActive(true);
-        pause.Initialize();
+
+        pauseCanva.Initialize();
+        dialogueCanva.Initialize(gameManager);
+
         lucy.Initialize(gameManager, lucy, lucyLocations);
 
         hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects, opossumCount);

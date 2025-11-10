@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
      private const string ACTION_MAP = "UIandMenu";
     private const string PAUSE = "Pause";
+    private const string NEXT = "NextDialogueLine";
     private InputActionAsset actions;
     private InputAction pause;
     RaccoonController player;
@@ -14,13 +15,14 @@ public class GameManager : MonoBehaviour
     HidingPlacesManager hidingPlacesManager;
     BabyOpossumBehavior babyOpossum;
     UIManager pauseMenu;
+    DialogueManager dialogueManager;
     SoundManager soundManager;
     AudioSource bgMusic;
     bool onPause;
     bool isOpossumSpawned;
     private int numberOfOpossumCaught;
     private int numberOfOpossumToCatch;
-    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, LucyBehavior lucy, BabyOpossumBehavior babyOpossum, UIManager pauseMenu, int opossumCount, SoundManager soundManager)
+    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, LucyBehavior lucy, BabyOpossumBehavior babyOpossum, UIManager pauseMenu, DialogueManager dialogueManager, int opossumCount, SoundManager soundManager)
     {
         this.player = player;
         this.actions = actions;
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         this.hidingPlacesManager = hidingPlacesManager;
         this.babyOpossum = babyOpossum;
         this.pauseMenu = pauseMenu;
+        this.dialogueManager = dialogueManager;
         this.soundManager = soundManager;
         // this.bgMusic = bgMusic;
 
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         actions.FindActionMap(ACTION_MAP).Enable();
         actions.FindActionMap(ACTION_MAP).FindAction(PAUSE).performed += OnPause;
+        actions.FindActionMap(ACTION_MAP).FindAction(NEXT).performed += NextLine;
     }
 
 
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         actions.FindActionMap(ACTION_MAP).Disable();
         actions.FindActionMap(ACTION_MAP).FindAction(PAUSE).performed -= OnPause;
+        actions.FindActionMap(ACTION_MAP).FindAction(NEXT).performed -= NextLine;
     }
 
     void Update()
@@ -90,23 +95,64 @@ public class GameManager : MonoBehaviour
     public void LucyDialogue()
     {
         lucy.LucyDialogue();
+        Time.timeScale = onPause ? 0f : 1f;
+        player.gameObject.SetActive(false);
+        dialogueManager.gameObject.SetActive(true);
+
+        if (!lucy.IsQuestStarted)
+        {
+            dialogueManager.StartDialogue("beginQuest");
+            StartOpossumQuest();
+            lucy.IsQuestStarted = true;
+        }
+        else
+        {
+            if (lucy.IsQuestCompleted)
+            {
+                dialogueManager.StartDialogue("endQuest");
+                pauseMenu.EndOpossumQuest();
+
+            }
+            else
+            {
+                dialogueManager.StartDialogue("hint");
+            }
+        }
     }
+    public void NextLine(InputAction.CallbackContext callbackContext)
+    {
+        if(dialogueManager.gameObject.activeSelf)
+        {
+            dialogueManager.NextLine();    
+        }
+    }
+    public void EndOfDialogue()
+    {
+        dialogueManager.gameObject.SetActive(false);
+        Time.timeScale = onPause? 0f : 1f;
+        player.gameObject.SetActive(true);
+
+    }
+
     public void StartOpossumQuest()
     {
         pauseMenu.LaunchOpossumQuest(numberOfOpossumToCatch);
         hidingPlacesManager.SetUpOpossums(numberOfOpossumToCatch);
     }
+
+
+
     public void IsThereAnOpossumThere(GameObject place)
     {
         hidingPlacesManager.IsItOnTheList(place);
         soundManager.rummageSoundPlay();
 
     }
-    public void SpawnOpossum(Vector3 localisation)
+    public void SpawnOpossum(Vector3 location)
     {
-        babyOpossum.SpawnIn(localisation);
+        babyOpossum.SpawnIn(location);
         isOpossumSpawned = true;
-        Debug.Log($"Spawn an opossum in {localisation}");
+        // Debug.Log($"Spawn an opossum in {location}");
     }
     
 
