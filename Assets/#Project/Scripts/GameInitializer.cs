@@ -42,6 +42,9 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private AudioSource waterFallSound;
     [SerializeField] private AudioMixerSnapshot snapshotNormal;
     [SerializeField] private AudioMixerSnapshot snapshotWaterFall;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AnimationCurve animationCurveWaterFall;
+
 
 
 
@@ -90,7 +93,8 @@ public class GameInitializer : MonoBehaviour
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
         gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pause, opossumCount, soundManager);
-        soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter, waterFallSound, snapshotNormal, snapshotWaterFall);
+        soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter, waterFallSound, snapshotNormal, snapshotWaterFall,audioMixer, animationCurveWaterFall
+        );
         gameManager.gameObject.SetActive(true);
         pause.Initialize(opossumCount);
         lucy.Initialize(gameManager, lucy, lucyLocations);

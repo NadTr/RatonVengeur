@@ -107,24 +107,33 @@ public class RaccoonController : MonoBehaviour
         {
             // CaughtAnOpossum();
         }
-        if (collision.CompareTag("WaterFall"))
-        {
-            Debug.Log("WaterFall");
-            gameManager.WaterFallSound(false);
-        }
+        // if (collision.CompareTag("WaterFall"))
+        // {
+        //     Debug.Log("WaterFall");
+        //     gameManager.WaterFallSound(this.transform);
+        // }
         if (collision.CompareTag("Out"))
         {
             Debug.Log("try to get out");
         }
     }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WaterFall"))
+        {
+            gameManager.WaterFallSound(this.transform, false);
+        }
+    }
+    
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("WaterFall"))
         {
-            gameManager.WaterFallSound(true);        
-        }
-        
+            gameManager.WaterFallSound(this.transform, true);        
+        } 
     }
+
+
     private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
         // Debug.Log("grmbllll");

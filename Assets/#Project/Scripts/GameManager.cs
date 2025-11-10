@@ -80,9 +80,10 @@ public class GameManager : MonoBehaviour
             soundManager.RaccoonNoise("chatter");
         }
     }
-    public void WaterFallSound(bool playerIsClose)
+    public void WaterFallSound(Transform playerTransform, bool playerIsClose)
     {
-        soundManager.WaterFallSound(playerIsClose);
+        soundManager.WaterFallSoundBool(playerIsClose);
+        soundManager.WaterFallSound(playerTransform);
     }
 
     public void LucyDialogue()
