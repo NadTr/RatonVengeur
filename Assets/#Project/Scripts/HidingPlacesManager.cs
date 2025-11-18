@@ -44,7 +44,7 @@ public class HidingPlacesManager : MonoBehaviour
             rnd = Random.Range(0, hidingPlacesLocations.Count);
         }
 
-        // Debug.Log($"{rnd} at position : {hidingPlacesLocations.ElementAt(rnd).Key.position}");
+        Debug.Log($"{rnd} at position : {hidingPlacesLocations.ElementAt(rnd).Key.position}");
         opossumLocations.Add(hidingPlacesLocations.ElementAt(rnd).Key.position, hidingPlacesLocations.ElementAt(rnd).Value);
     }
 

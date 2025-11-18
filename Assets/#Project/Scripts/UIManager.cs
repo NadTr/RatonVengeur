@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
         if (this.transform.Find("QuestText").TryGetComponent<TMP_Text>(out TMP_Text questText))
         {
             this.questText = questText; 
-            questText.SetText(" ");
+            questText.SetText("Va parler à Lucie");
         }
     }
     public void LaunchOpossumQuest(int totalToCatch)

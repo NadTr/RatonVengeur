@@ -118,12 +118,14 @@ public class GameManager : MonoBehaviour
                 dialogueManager.StartDialogue("hint");
             }
         }
+        soundManager.OpossumNoise("lucy");
     }
     public void NextLine(InputAction.CallbackContext callbackContext)
     {
         if(dialogueManager.gameObject.activeSelf)
         {
             dialogueManager.NextLine();    
+            soundManager.OpossumNoise("lucy");
         }
     }
     public void EndOfDialogue()
@@ -152,7 +154,7 @@ public class GameManager : MonoBehaviour
     {
         babyOpossum.SpawnIn(location);
         isOpossumSpawned = true;
-        // Debug.Log($"Spawn an opossum in {location}");
+        soundManager.OpossumNoise("baby");
     }
     
 

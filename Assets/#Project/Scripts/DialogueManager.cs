@@ -25,11 +25,11 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(string dialogueName)
     {
         i = 0;
-        Debug.Log(dialogueName);
+        // Debug.Log(dialogueName);
         if (dialogueName == "beginQuest")
         {
             dialogueActive = startQuestDialogueLines;
-            Debug.Log("beginQuest inside if");
+            // Debug.Log("beginQuest inside if");
         }
         if (dialogueName == "endQuest")
         {
@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour
             dialogueActive = HintDialogueLines;
         }
         ShowDialogue(i, dialogueActive);
-        Debug.Log(dialogueActive[1]);
+        // Debug.Log(dialogueActive[1]);
 
     }
     public void NextLine()
