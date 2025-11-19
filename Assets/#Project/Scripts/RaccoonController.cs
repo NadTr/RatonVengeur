@@ -14,9 +14,7 @@ public class RaccoonController : MonoBehaviour
     private const string ACTION_MOVE = "Move";
     private const string ACTION_GRUMBLE = "Grumble";
     private const string ACTION_INTERACT = "Interact";
-
-    // private UIManager uI;
-    private GameManager gameManager;
+     private GameManager gameManager;
     private InputActionAsset actions;
     private InputAction move;
     private float speed = 3f;
@@ -78,13 +76,7 @@ public class RaccoonController : MonoBehaviour
         frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : (movement.y != 0f ? 0f : frontDirection.x));
         frontDirection.y = movement.y > 0f ? 1f : (movement.y < 0f ? -1f :(movement.x != 0f ? 0f: frontDirection.y));
         transform.Translate( movement.x, movement.y,  0f, Space.World);
-    }
-
-    // public void CaughtAnOpossum()
-    // {
-    //     score += 1;
-    //     uI.IncreaseCounter();
-    // }
+    } 
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -99,22 +91,18 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
-        // Debug.Log("grmbllll");
-        // gameManager.StartleOpossum(this.transform);
         //make a sound
         //make an animation
         gameManager.RaccoonGrumble(this.transform);
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
     {
-        // Debug.Log($"front : {frontDirection}");
         Vector3 origin = transform.position + frontDirection.y * 0.5f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
-        // Debug.Log(origin);
         RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.2f);
         Debug.DrawRay(origin, frontDirection * 10, Color.red);
         if (sideHit.collider != null)
         {
-            Debug.Log($"intercact with {sideHit.collider.name}");
+            // Debug.Log($"intercact with {sideHit.collider.name}");
             if (sideHit.collider.CompareTag("HidingPlace"))
             {
                 gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);

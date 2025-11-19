@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811e84c0804ba2946a39a247e8e69905, type: 3}
   m_Name: OpossumData
   m_EditorClassIdentifier: Assembly-CSharp::OpossumData
-  location_y: -0.5
+  location_y: 1
   delaySpawn: 0.5
   delayStartled: 0.5
   runAwaySpeed: 2.5
