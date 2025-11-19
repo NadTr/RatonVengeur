@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
@@ -10,28 +11,53 @@ public class GameInitializer : MonoBehaviour
 
     [Header("Terrain")]
     [SerializeField] Grid terrain;
-
+    [SerializeField] GameObject waterfallPosition;
     [Space]
+
     [Header("Player")]
     [SerializeField] RaccoonController player;
     [SerializeField] private InputActionAsset actions;
-
     [Space]
+
+    [Header("PNJ Sprites")]
+    [SerializeField] LucyBehavior lucy;
+    [SerializeField] BabyOpossumBehavior babyOpossum;
+    [SerializeField] GameObject lucyLocations;
+    [Space]
+
     [Header("HidingPlaces")]
     [SerializeField] int opossumCount = 5;
-    [SerializeField] OpossumManager opossum;
     [SerializeField] GameObject[] trees;
     [SerializeField] GameObject treesPossibleLocations;
     [SerializeField] GameObject[] objects;
     [SerializeField] GameObject objectPossibleLocations;
     [SerializeField] HidingPlacesManager hidingPlaces;
+    [Space]
+
+    [Header("Sounds")]
+    [SerializeField] private AudioSource bgMusic;
+    [SerializeField] private AudioSource raccoonGrumble;
+    [SerializeField] private AudioSource raccoonChatter;
+    [SerializeField] private AudioSource footsteps;
+    [SerializeField] private AudioSource rummageSound;
+    [SerializeField] private AudioSource opossumSound;
+    [SerializeField] private AudioSource waterFallSound;
+    [SerializeField] private AudioMixerSnapshot snapshotNormal;
+    [SerializeField] private AudioMixerSnapshot snapshotWaterFall;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AnimationCurve animationCurveWaterFall;
+
+
+
 
     [Space]
     [Header("Game Manager")]
     [SerializeField] GameManager gameManager;
     // [SerializeField] UIManager uIManager;
     // [SerializeField] TMP_Text text_score ;
-    [SerializeField] UIManager pause;
+    [SerializeField] SoundManager soundManager;
+    [SerializeField] UIManager pauseCanva;
+    [SerializeField] DialogueManager dialogueCanva;
 
     [Space]
     [Header("GameData")]
@@ -47,27 +73,44 @@ public class GameInitializer : MonoBehaviour
     {
         cameraManager = Instantiate(cameraManager);
         terrain = Instantiate(terrain);
+        waterfallPosition = Instantiate(waterfallPosition);
+
         gameManager = Instantiate(gameManager);
-        pause = Instantiate(pause);
+        pauseCanva = Instantiate(pauseCanva);
+        dialogueCanva = Instantiate(dialogueCanva);
 
         player = Instantiate(player);
+        lucy = Instantiate(lucy);
         hidingPlaces = Instantiate(hidingPlaces);
-        opossum = Instantiate(opossum);
+        babyOpossum = Instantiate(babyOpossum);
         // uIManager = Instantiate(uIManager);
+
+        bgMusic = Instantiate(bgMusic);
+        raccoonGrumble = Instantiate(raccoonGrumble);
+        raccoonChatter = Instantiate(raccoonChatter);
+        rummageSound = Instantiate(rummageSound);
+        footsteps = Instantiate(footsteps);
+        opossumSound = Instantiate(opossumSound);
+        waterFallSound = Instantiate(waterFallSound);
     }
 
     private void InitializeObjects()
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, opossum, pause, opossumCount);
+        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pauseCanva, dialogueCanva, opossumCount, soundManager);
+        soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter, rummageSound, opossumSound, waterFallSound, snapshotNormal, snapshotWaterFall, audioMixer, animationCurveWaterFall);
         gameManager.gameObject.SetActive(true);
-        pause.Initialize(opossumCount);
+
+        pauseCanva.Initialize();
+        dialogueCanva.Initialize(gameManager);
+
+        lucy.Initialize(gameManager, lucy, lucyLocations);
 
         hidingPlaces.Initialize(gameManager, treesPossibleLocations, trees, objectPossibleLocations, objects, opossumCount);
-        opossum.Initialize(gameManager, gameData.OpossumData.location_y, gameData.OpossumData.delaySpawn, gameData.OpossumData.delayStartled, gameData.OpossumData.runAwaySpeed);
+        babyOpossum.Initialize(gameManager, gameData.OpossumData.location_y, gameData.OpossumData.delaySpawn, gameData.OpossumData.delayStartled, gameData.OpossumData.runAwaySpeed);
 
-        player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos);
+        player.Initialize(gameManager, player, actions, gameData.PlayerData.playerSpeed, gameData.PlayerData.playerStartPos, footsteps);
         player.gameObject.SetActive(true);
 
     }

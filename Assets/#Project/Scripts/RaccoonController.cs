@@ -24,13 +24,19 @@ public class RaccoonController : MonoBehaviour
     private Collider2D coll;
     private Vector3 startPosition;
     private Vector3 frontDirection;
+    // private AudioSource raccoonGrumble;
+    private AudioSource footsteps;
+    private float footStepDelay = 0.3f;
+    private float timer = 0f;
 
-    public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position)
+    public void Initialize(GameManager gameManager, RaccoonController player, InputActionAsset actions, float playerSpeed, Vector3 position,AudioSource footsteps)
     {
         this.gameManager = gameManager;
         this.actions = actions;
         this.speed = playerSpeed;
         this.startPosition = position;
+        // this.raccoonGrumble = raccoonGrumble;
+        this.footsteps = footsteps;
 
         PlayerInstantiate(startPosition);
 
@@ -67,6 +73,7 @@ public class RaccoonController : MonoBehaviour
     public void Process()
     {
         Move();
+                   
     }
 
     private void Move()
@@ -75,8 +82,22 @@ public class RaccoonController : MonoBehaviour
         // frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : 0f);
         frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : (movement.y != 0f ? 0f : frontDirection.x));
         frontDirection.y = movement.y > 0f ? 1f : (movement.y < 0f ? -1f :(movement.x != 0f ? 0f: frontDirection.y));
-        transform.Translate( movement.x, movement.y,  0f, Space.World);
-    } 
+        transform.Translate(movement.x, movement.y, 0f, Space.World);
+        if (movement.sqrMagnitude > 0)
+        {
+            timer += Time.deltaTime;
+            // Debug.Log(timer);
+            if (timer >= footStepDelay)
+            {
+                footsteps.Play();
+                timer = 0f;
+            }
+        }
+        else
+        {
+            timer = 0f;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,14 +105,40 @@ public class RaccoonController : MonoBehaviour
         {
             // CaughtAnOpossum();
         }
+        // if (collision.CompareTag("WaterFall"))
+        // {
+        //     Debug.Log("WaterFall");
+        //     gameManager.WaterFallSound(this.transform);
+        // }
         if (collision.CompareTag("Out"))
         {
             Debug.Log("try to get out");
         }
     }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WaterFall"))
+        {
+            gameManager.WaterFallSound(this.transform, false);
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WaterFall"))
+        {
+            gameManager.WaterFallSound(this.transform, true);        
+        } 
+    }
+
+
     private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
+<<<<<<< HEAD
         //make a sound
+=======
+        // Debug.Log("grmbllll");
+>>>>>>> 35a67c176f2cc77c88f9759ca150e4b428973247
         //make an animation
         gameManager.RaccoonGrumble(this.transform);
     }
@@ -103,6 +150,13 @@ public class RaccoonController : MonoBehaviour
         if (sideHit.collider != null)
         {
             // Debug.Log($"intercact with {sideHit.collider.name}");
+<<<<<<< HEAD
+=======
+            if (sideHit.collider.CompareTag("Lucy"))
+            {
+                gameManager.LucyDialogue();
+            }
+>>>>>>> 35a67c176f2cc77c88f9759ca150e4b428973247
             if (sideHit.collider.CompareTag("HidingPlace"))
             {
                 gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);
@@ -113,5 +167,6 @@ public class RaccoonController : MonoBehaviour
             }
         }
     }
+
 
 }
