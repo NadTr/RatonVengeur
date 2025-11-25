@@ -211,6 +211,14 @@ PrefabInstance:
       value: GameInitializer
       objectReference: {fileID: 0}
     - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: -3636605073715993140, guid: d2216b3de9a99ae4d9aa9ff2227bfa10, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: opossum
+      value: 
+      objectReference: {fileID: 3000058748676762954, guid: 37b64d79d09006244a34afc9b50195d3, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: opossumCount
       value: 10
       objectReference: {fileID: 0}

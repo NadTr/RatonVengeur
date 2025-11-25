@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7485102641503667462}
   - component: {fileID: 2795243487736453733}
   - component: {fileID: -1765004307700899040}
+  - component: {fileID: -136043829310206027}
   m_Layer: 0
   m_Name: Tree3
   m_TagString: HidingPlace
@@ -137,3 +138,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.12426337, y: 0.065406464}
   m_EdgeRadius: 0
+--- !u!95 &-136043829310206027
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147885903017128883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0cf6819c22c6394c88acaa5c542684f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

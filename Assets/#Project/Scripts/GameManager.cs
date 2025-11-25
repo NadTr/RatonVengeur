@@ -152,19 +152,20 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnOpossum(Vector3 location)
     {
-        opossum.SpawnIn(localisation);
+        babyOpossum.SpawnIn(location);
+        isOpossumSpawned = true;
         // Debug.Log($"Spawn an opossum in {localisation}");
     }
-    public void RaccoonGrumble(Transform raccoon)
-    {
-        // Vector3 distance3 = raccoon.position - opossum.transform.position;
-        float distance = Vector3.Distance (raccoon.position, opossum.transform.position);
-        Debug.Log($"distance = {distance}");
-        if(distance < 3f)
-        {
-            StartleOpossum();
-        }
-    }
+    // public void RaccoonGrumble(Transform raccoon)
+    // {
+    //     // Vector3 distance3 = raccoon.position - opossum.transform.position;
+    //     float distance = Vector3.Distance (raccoon.position, opossum.transform.position);
+    //     Debug.Log($"distance = {distance}");
+    //     if(distance < 3f)
+    //     {
+    //         StartleOpossum();
+    //     }
+    // }
     
 
     public void StartleOpossum()

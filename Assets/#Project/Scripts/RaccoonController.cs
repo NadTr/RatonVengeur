@@ -134,11 +134,7 @@ public class RaccoonController : MonoBehaviour
 
     private void OnGrumble(InputAction.CallbackContext callbackContext)
     {
-<<<<<<< HEAD
-        //make a sound
-=======
         // Debug.Log("grmbllll");
->>>>>>> 35a67c176f2cc77c88f9759ca150e4b428973247
         //make an animation
         gameManager.RaccoonGrumble(this.transform);
     }
@@ -150,13 +146,10 @@ public class RaccoonController : MonoBehaviour
         if (sideHit.collider != null)
         {
             // Debug.Log($"intercact with {sideHit.collider.name}");
-<<<<<<< HEAD
-=======
             if (sideHit.collider.CompareTag("Lucy"))
             {
                 gameManager.LucyDialogue();
             }
->>>>>>> 35a67c176f2cc77c88f9759ca150e4b428973247
             if (sideHit.collider.CompareTag("HidingPlace"))
             {
                 gameManager.IsThereAnOpossumThere(sideHit.collider.gameObject);

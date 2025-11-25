@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class HidingPlacesManager : MonoBehaviour
 {
@@ -50,12 +51,20 @@ public class HidingPlacesManager : MonoBehaviour
 
     public void IsItOnTheList(GameObject place)
     {
+        StartCoroutine(ShakeTree(place, 0.3f));
         if (opossumLocations.ContainsKey(place.transform.position))
         {
             gm.SpawnOpossum(place.transform.position);
             opossumLocations.Remove(place.transform.position);
             // Debug.Log($" 2 = {opossumLocations.ContainsKey(place.transform.position)}");
         }
+    }
+    private IEnumerator ShakeTree(GameObject place, float delay = 2.5f)
+    {
+        Animator animator = place.transform.gameObject.GetComponent<Animator>();
+        animator.SetBool("shake", true);        
+        yield return new WaitForSeconds(delay);
+        animator.SetBool("shake", false);    
     }
     
     public void SaveAnotherLocation()

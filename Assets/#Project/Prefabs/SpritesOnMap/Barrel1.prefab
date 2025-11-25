@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4369042681756241377}
   - component: {fileID: 6893105501154735840}
   - component: {fileID: 4862914835019844880}
+  - component: {fileID: -2187549534575348587}
   m_Layer: 0
   m_Name: Barrel1
   m_TagString: HidingPlace
@@ -137,3 +138,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.15413094, y: 0.06932848}
   m_EdgeRadius: 0
+--- !u!95 &-2187549534575348587
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006753884609830111}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0cf6819c22c6394c88acaa5c542684f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
