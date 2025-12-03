@@ -1,7 +1,12 @@
-# This Game was made with Unity
+# Raton Vengeur
+_This Game was made with Unity_
 
-Game design and development : [NadTr](https://github.com/NadTr)
+Become a raccoon and try to save your forest
 
+_Development - part1:_
+Help Lucy the Opossum to find all of her children
+
+## Credits
 
 Music : [incompetech](https://incompetech.com/wordpress/)
 
