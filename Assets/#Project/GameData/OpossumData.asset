@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpossumData
   location_y: 1
   delaySpawn: 0.5
-  delayStartled: 0.5
+  delayStartled: 1.5
   runAwaySpeed: 2.5

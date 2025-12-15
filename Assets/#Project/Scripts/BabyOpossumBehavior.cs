@@ -2,8 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class BabyOpossumBehavior : MonoBehaviour
 {
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     GameManager gm;
     float location_y = -0.05f;
     float delaySpawn = 0.5f;
@@ -13,15 +17,20 @@ public class BabyOpossumBehavior : MonoBehaviour
     bool isCaught;
     public void Initialize(GameManager gm, float location_y, float delaySpawn, float delayStartled, float runAwaySpeed)
     {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         this.gm = gm;
         this.location_y = location_y;
         this.delaySpawn = delaySpawn;
         this.delayStartled = delayStartled;
         this.runAwaySpeed = runAwaySpeed;
+
     }
 
     public void SpawnIn(Vector3 localisation)
     {
+        spriteRenderer.flipY = false;
         isStartled = false;
         isCaught = false;
         localisation.y -= location_y;
@@ -46,14 +55,21 @@ public class BabyOpossumBehavior : MonoBehaviour
     }
     private IEnumerator StartledCoroutine()
     {
+        animator.SetBool("is scared", true);
+        spriteRenderer.flipY = true;
+
         yield return new WaitForSeconds(delayStartled);
         isStartled = false;
+        animator.SetBool("is scared", false);
+        spriteRenderer.flipY = false;
+
         StartCoroutine(RunAway());  
     }
     private IEnumerator RunAway()
     {
         // while( transform.position)
         yield return new WaitForSeconds(delaySpawn);
+        animator.SetBool("is walking", true);
         // transform.position += Time.deltaTime * 0.35f * Vector3.right;
 
         float chrono = 0f;
