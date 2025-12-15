@@ -83,6 +83,30 @@ public class RaccoonController : MonoBehaviour
         frontDirection.x = movement.x > 0f ? 1f : (movement.x < 0f ? -1f : (movement.y != 0f ? 0f : frontDirection.x));
         frontDirection.y = movement.y > 0f ? 1f : (movement.y < 0f ? -1f :(movement.x != 0f ? 0f: frontDirection.y));
         transform.Translate(movement.x, movement.y, 0f, Space.World);
+        if(frontDirection.x != 0)
+        {
+            animator.SetBool("is forward", true);
+            animator.SetBool("is up", false);
+            animator.SetBool("is down", false);
+            spriteRenderer.flipX = frontDirection.x == -1f;
+            // Debug.Log($"flipX? {frontDirection.x == -1f}");
+            
+        }
+        else
+        {
+            if (frontDirection.y == 1f)
+            {                
+                animator.SetBool("is up", true);
+                animator.SetBool("is forward", false);
+                animator.SetBool("is down", false);
+            }
+            else
+            {
+                animator.SetBool("is down", true);
+                animator.SetBool("is up", false);
+                animator.SetBool("is forward", false);               
+            }
+        }
         if (movement.sqrMagnitude > 0)
         {
             timer += Time.deltaTime;
@@ -92,10 +116,15 @@ public class RaccoonController : MonoBehaviour
                 footsteps.Play();
                 timer = 0f;
             }
+
+            animator.SetBool("is walking", true);
+            Debug.Log("walking aniomator?");
+
         }
         else
         {
             timer = 0f;
+            animator.SetBool("is walking", false);
         }
     }
 
@@ -140,7 +169,7 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
     {
-        Vector3 origin = transform.position + frontDirection.y * 0.5f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
+        Vector3 origin = transform.position + frontDirection.y * 0.4f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
         RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.2f);
         Debug.DrawRay(origin, frontDirection * 10, Color.red);
         if (sideHit.collider != null)

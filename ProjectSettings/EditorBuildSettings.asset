@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/#Project/Scenes/Parc.unity
     guid: 63b1bf161da65fa48995f369591f8094
-  - enabled: 1
-    path: Assets/#Project/Scenes/UI/PauseMenu.unity
-    guid: 8c6b826571c5bd643abc38d7122889cb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
