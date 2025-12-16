@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: opossumSound
       value: 
       objectReference: {fileID: 5641187433175474263, guid: 19cfa6508001c2a47b63053621e72972, type: 3}
+    - target: {fileID: 5016166083442385618, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
+      propertyPath: dialogueCanva
+      value: 
+      objectReference: {fileID: 1678410717774523930, guid: 4d20bee00d5f63443988834bc85ae1e0, type: 3}
     - target: {fileID: 7072347622062463848, guid: 29f68c862b7ccdd44a51327fe7479092, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.70368

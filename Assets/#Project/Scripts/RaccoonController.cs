@@ -169,12 +169,13 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnInteract(InputAction.CallbackContext callbackContext)
     {
-        Vector3 origin = transform.position + frontDirection.y * 0.4f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
-        RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.2f);
+        // Vector3 origin = transform.position + frontDirection.y * 0.4f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
+        Vector3 origin = transform.position;
+        RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.5f);
         Debug.DrawRay(origin, frontDirection * 10, Color.red);
         if (sideHit.collider != null)
         {
-            // Debug.Log($"intercact with {sideHit.collider.name}");
+            Debug.Log($"intercact with {sideHit.collider.name}");
             if (sideHit.collider.CompareTag("Lucy"))
             {
                 gameManager.LucyDialogue();

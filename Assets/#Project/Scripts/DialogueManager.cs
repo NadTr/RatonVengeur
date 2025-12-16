@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     {
         this.gameManager = gameManager;
 
-        if (this.transform.Find("Dialogue_Text").TryGetComponent<TMP_Text>(out TMP_Text questText))
+        if (this.transform.GetChild(0).GetChild(0).Find("Dialogue_Text").TryGetComponent<TMP_Text>(out TMP_Text questText))
         {
             this.dialogueText = questText;
             questText.SetText(" ");
