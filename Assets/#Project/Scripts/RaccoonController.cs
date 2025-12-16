@@ -1,5 +1,5 @@
 using System;
-using UnityEditor.Experimental.GraphView;
+// using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -171,7 +171,7 @@ public class RaccoonController : MonoBehaviour
         // Vector3 origin = transform.position + frontDirection.y * 0.4f * Vector3.up + frontDirection.x * 0.5f * Vector3.right;
         Vector3 origin = transform.position;
         RaycastHit2D sideHit = Physics2D.Raycast(origin, frontDirection, 0.5f);
-        Debug.DrawRay(origin, frontDirection * 10, Color.red);
+        // Debug.DrawRay(origin, frontDirection * 10, Color.red);
         if (sideHit.collider != null)
         {
             Debug.Log($"intercact with {sideHit.collider.name}");

@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
     {
         babyOpossum.SpawnIn(location);
         isOpossumSpawned = true;
+        soundManager.OpossumNoise("baby");
         // Debug.Log($"Spawn an opossum in {localisation}");
     }
     // public void RaccoonGrumble(Transform raccoon)
