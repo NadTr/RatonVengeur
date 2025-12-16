@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour
     DialogueManager dialogueManager;
     SoundManager soundManager;
     AudioSource bgMusic;
+    GameObject rockToDestroy;
+
     bool onPause;
     bool isOpossumSpawned;
     private int numberOfOpossumCaught;
     private int numberOfOpossumToCatch;
-    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, LucyBehavior lucy, BabyOpossumBehavior babyOpossum, UIManager pauseMenu, DialogueManager dialogueManager, int opossumCount, SoundManager soundManager)
+    public void Initialize(RaccoonController player, InputActionAsset actions, CameraManager cam, HidingPlacesManager hidingPlacesManager, LucyBehavior lucy, BabyOpossumBehavior babyOpossum, UIManager pauseMenu, DialogueManager dialogueManager, int opossumCount, SoundManager soundManager, GameObject rockToDestroy)
     {
         this.player = player;
         this.actions = actions;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         this.pauseMenu = pauseMenu;
         this.dialogueManager = dialogueManager;
         this.soundManager = soundManager;
+        this.rockToDestroy = rockToDestroy;
         // this.bgMusic = bgMusic;
 
         isOpossumSpawned = false;
@@ -111,6 +114,7 @@ public class GameManager : MonoBehaviour
             {
                 dialogueManager.StartDialogue("endQuest");
                 pauseMenu.EndOpossumQuest();
+                rockToDestroy.SetActive(false);
 
             }
             else

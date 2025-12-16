@@ -12,6 +12,7 @@ public class GameInitializer : MonoBehaviour
     [Header("Terrain")]
     [SerializeField] Grid terrain;
     [SerializeField] GameObject waterfallPosition;
+    GameObject rockToDestroy;
     [Space]
 
     [Header("Player")]
@@ -74,6 +75,7 @@ public class GameInitializer : MonoBehaviour
         cameraManager = Instantiate(cameraManager);
         terrain = Instantiate(terrain);
         waterfallPosition = Instantiate(waterfallPosition);
+        rockToDestroy = terrain.transform.Find("SpritesOnMap").Find("RockToDestroy").gameObject;
 
         gameManager = Instantiate(gameManager);
         pauseCanva = Instantiate(pauseCanva);
@@ -98,7 +100,7 @@ public class GameInitializer : MonoBehaviour
     {
         // uIManager.Initialize(text_score, 0);
         cameraManager.Initialize(player.transform);
-        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pauseCanva, dialogueCanva, opossumCount, soundManager);
+        gameManager.Initialize(player, actions, cameraManager, hidingPlaces, lucy, babyOpossum, pauseCanva, dialogueCanva, opossumCount, soundManager, rockToDestroy);
         soundManager.Initialize(bgMusic, raccoonGrumble, raccoonChatter, rummageSound, opossumSound, waterFallSound, snapshotNormal, snapshotWaterFall, audioMixer, animationCurveWaterFall);
         gameManager.gameObject.SetActive(true);
 

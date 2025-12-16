@@ -15,6 +15,7 @@ public class BabyOpossumBehavior : MonoBehaviour
     float runAwaySpeed = 2.5f;
     bool isStartled;
     bool isCaught;
+    bool goRight;
     public void Initialize(GameManager gm, float location_y, float delaySpawn, float delayStartled, float runAwaySpeed)
     {
         animator = GetComponent<Animator>();
@@ -30,6 +31,8 @@ public class BabyOpossumBehavior : MonoBehaviour
 
     public void SpawnIn(Vector3 localisation)
     {
+        goRight = Random.value <= 0.5f;
+        spriteRenderer.flipX = !goRight;
         spriteRenderer.flipY = false;
         isStartled = false;
         isCaught = false;
@@ -77,7 +80,7 @@ public class BabyOpossumBehavior : MonoBehaviour
         while (chrono < 10f && !isStartled)
         {
             chrono += Time.deltaTime;
-            transform.position += Time.deltaTime * runAwaySpeed * Vector3.right;
+            transform.position += Time.deltaTime * runAwaySpeed * (goRight? 1 : -1) * Vector3.right;
             yield return new WaitForEndOfFrame();
         }
     }

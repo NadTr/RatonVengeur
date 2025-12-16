@@ -2,6 +2,7 @@ using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -134,14 +135,12 @@ public class RaccoonController : MonoBehaviour
         {
             // CaughtAnOpossum();
         }
-        // if (collision.CompareTag("WaterFall"))
-        // {
-        //     Debug.Log("WaterFall");
-        //     gameManager.WaterFallSound(this.transform);
-        // }
+
         if (collision.CompareTag("Out"))
         {
             Debug.Log("try to get out");
+            SceneManager.LoadScene("EndMenu");
+
         }
     }
     void OnTriggerStay2D(Collider2D collision)
