@@ -20,10 +20,10 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateOpossumQuest(int count)
     {
-        questText.SetText($"Nombre d'opossums trouvés : {count}/{totalToCatch}");
+        questText.SetText($"Nombre d'opossums trouvés : {count}/{totalToCatch} {(count == totalToCatch? "\n \t Retourne vers Lucie" : "")}");
     }
     public void EndOpossumQuest()
     {
-        questText.SetText($" ");
+        questText.SetText($"Trouve la sortie ");
     }
 }
