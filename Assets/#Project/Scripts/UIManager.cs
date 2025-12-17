@@ -26,4 +26,9 @@ public class UIManager : MonoBehaviour
     {
         questText.SetText($"Trouve la sortie ");
     }
+
+        public void OnQuitButton ()
+    {
+        Application.Quit();
+    }
 }

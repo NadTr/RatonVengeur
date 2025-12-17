@@ -119,7 +119,7 @@ public class RaccoonController : MonoBehaviour
             }
 
             animator.SetBool("is walking", true);
-            Debug.Log("walking aniomator?");
+            // Debug.Log("walking aniomator?");
 
         }
         else
@@ -138,7 +138,7 @@ public class RaccoonController : MonoBehaviour
 
         if (collision.CompareTag("Out"))
         {
-            Debug.Log("try to get out");
+            // Debug.Log("try to get out");
             SceneManager.LoadScene("EndMenu");
 
         }

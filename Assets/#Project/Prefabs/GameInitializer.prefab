@@ -71,6 +71,7 @@ MonoBehaviour:
   raccoonChatter: {fileID: 6353273838883440595, guid: 0e653e7ab9bd3b447a25d43b5bbdf96a, type: 3}
   footsteps: {fileID: 4496780405414038239, guid: e0a7f0a69d12ba945aadb91b2ff2269f, type: 3}
   rummageSound: {fileID: 3922207891249445771, guid: 0b024158b9034624193afc2ec065776f, type: 3}
+  opossumSound: {fileID: 5641187433175474263, guid: 19cfa6508001c2a47b63053621e72972, type: 3}
   waterFallSound: {fileID: 1277280778454842320, guid: a6e313d4a4899b44c85218bbdafe93b7, type: 3}
   snapshotNormal: {fileID: -7998132565832802688, guid: cb781b0ba7eaf4a4caf4da9d40b91708, type: 2}
   snapshotWaterFall: {fileID: -5573907613019032903, guid: cb781b0ba7eaf4a4caf4da9d40b91708, type: 2}
