@@ -1292,10 +1292,10 @@
                 {
                     "name": "",
                     "id": "e499a0c3-e2b8-46a3-bbd7-85089f81f07c",
-                    "path": "<HID::Core (Plus) Wired Controller>/button2",
+                    "path": "<HID::Core (Plus) Wired Controller>/button10",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
     string[] dialogueActive;
     string[] startQuestDialogueLines = { "Bonjour", "J'ai besoin d'aide pour trouver mes enfants", "Ils se sont cachés dans les objets et les arbres de ce parc" };
     string[] HintDialogueLines = { "Rebonjour", "Si vous avez besoin d'aide, voici un conseil", "N'hésitez pas à faire du bruit pour leur faire peur", "Essayez d'appuyer sur A / X quand l'un d'eux apparaît" };
-    string[] EndQuestDialogueLines = { "Merci", "J'ai dégagé passage dans la cloture si ça vous intéresse, allez voir vers l'Ouest" };
+    string[] EndQuestDialogueLines = { "Merci", "J'ai dégagé un passage dans la cloture si ça vous intéresse, allez voir vers l'Ouest" };
     int i;
     public void Initialize(GameManager gameManager)
     {
